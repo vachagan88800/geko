@@ -1,0 +1,16 @@
+div {
+    border: 1px solid #000;
+    width: 100px;
+    height: 100px;
+}
+.cube {
+    background: green;
+}
+.box {
+    background:cyan;
+}
+#box1 {
+    border: 10px solid black;
+}
+ 
+ 
