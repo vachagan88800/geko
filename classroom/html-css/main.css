@@ -1,16 +1,10 @@
-div {
-    border: 1px solid #000;
-    width: 100px;
-    height: 100px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+body {
+    min-height: 100vh;
+    position: relative;
 }
-.cube {
-    background: green;
-}
-.box {
-    background:cyan;
-}
-#box1 {
-    border: 10px solid black;
-}
- 
- 
