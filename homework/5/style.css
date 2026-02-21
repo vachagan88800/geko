@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#site-header {
+background-color: blueviolet;
+width: 1200px;
+}
+nav a {
+    color: rgb(56, 14, 128);
+}
+
+a[target="_blank"] {
+  color: #760973;
+  
+  
+}
+
+.card
+{
+ border: 5px inset rgb(208, 15, 208);
+border-radius: 10px;
+background-color: rgb(195, 151, 237);
+margin: 5px;
+padding: 10px; 
+}
+
+.card[data-type="featured"] {
+background-color: rgb(167, 91, 239);
+border: 10px inset (208,15,208);}
+
+
+
+a {text-decoration: none;
+
+}
+
+input {
+  border: 3px double #581985;
+  padding: 10px;
+  border-radius: 4px;
+background-color: rgb(248, 205, 242);}
+
+button {background-color: rgb(211, 181, 239);
+color: purple;}
+button:hover {background-color: rgb(203, 56, 219);
+color: blueviolet;}
