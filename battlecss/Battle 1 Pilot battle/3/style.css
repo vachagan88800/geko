@@ -48,8 +48,31 @@ body {
   position: relative;
 }
 
+.left {
+  position: absolute;
+  top: 25%;
+  left: 5%;
+
+}
+
+.right {
+  position: absolute;
+  right: 5%;
+  top: 25%;
+}
 
 .left::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -40px;
+  width: 80px;
+  height: 100%;
+  background-color:#6592CF;
+  border-radius: 50%;
+}
+
+.right::after {
   content: "";
   position: absolute;
   top: 0;
@@ -61,14 +84,4 @@ body {
 }
 
 
-.right::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: -40px;
-  width: 80px;
-  height: 100%;
-  background-color:#6592CF;
 
-  border-radius: 50%;
-}
