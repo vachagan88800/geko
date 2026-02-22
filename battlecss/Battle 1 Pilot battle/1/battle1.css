@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    background-color: #5d3a3a;
+}
+.square {
+    width: 250px;
+    height: 250px;
+    background: #b5e0ba;
+}
