@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  background-color:#62306D;
+}
+
+.container {
+  width: 400px;
+  aspect-ratio: 1 / 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.square {
+  width: 100px;
+  aspect-ratio: 1/1;
+  background-color: #F7EC7D;
+  top: 50%;
+  left:50%;
+  translate: -50% -50%;
+  position: absolute;
+  
+}
+
+.left {
+  position: absolute;
+  left: 25%;
+  border-radius: 0% 0% 50% 50%;
+}
+
+.middle {
+  position: absolute;
+  border-radius: 50% 50% 0% 0% ;
+  left: 50%;
+  top: 25%;
+}
+
+.right {
+  position: absolute;
+  border-radius: 0% 0% 50% 50%;
+  left: 150%;
+  top: 150%;
+}
