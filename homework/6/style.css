@@ -29,6 +29,8 @@
 }
 
 #circle3 {
+    box-sizing: border-box;
+    position: absolute;
     top: 50%;
     width: 200px;
     height: 200px;
