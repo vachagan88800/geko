@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+ width: 400px;
+ height: 300px;
+ background-color: #191919;
+ display: flex;
+ flex-direction: column;
+ padding: 15px 20px;
+ gap: 15px;
+}
+
+.klor {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: #F6E59C;
+    
+}
+
+.row {
+    display: flex;
+
+    gap: 20px;
+}
+
+.r1 {
+    display: flex;
+}
+.r2 {
+    display: flex;
+}
+.r3 {
+    display: flex;
+}
+.r4 {
+    display: flex;
+}
