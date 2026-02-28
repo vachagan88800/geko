@@ -10,7 +10,7 @@
   background-color:aliceblue;
   display: flex;
   align-items: center;
-justify-content: center;
+  justify-content: center;
   padding: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -83,7 +83,7 @@ font-weight: 600;
 
 .read {
   background-color: rgb(205, 226, 245);
-  width: 100px;
+  width: 75px;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -91,6 +91,6 @@ font-weight: 600;
   border-radius: 20px;
   color: rgb(64, 64, 200);
   font-weight: bold;
-  font-size: 12px;
+  font-size: 10px;
   padding: 5px;
 }

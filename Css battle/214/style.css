@@ -8,54 +8,67 @@
     width: 400px;
     height: 300px;
     background: #F8F8F8;
-
-
   }
 
 .row1{
     display:flex;
-    flex-direction:row;
-    justify-content: space-around;
+    justify-content:space-between;
     padding: 20px 30px;
-  border: 1px solid black;
-  justify-content: space-around;
   }
+
 .pujur {
     width:40px;
     height:50px;
     background-color:#787885;
-    display:flex;
-    flex-direction:row;
-    
-
+    display:flex;  
   }
 
 .row2 {
     display:flex;
-    flex-direction:row;
-    justify-content: space-between;
-    display:flex;
     flex-direction:column;
-    border: 1px solid black;
-    justify-content: space-around;
-
-
+    justify-content: center;
+    gap: 20px;
     }
+
 .erkar {
-      width:330px;
       height:10px;
+      width: 400px;
       background-color:#787885;
-      position:absolute;
       display:flex;
-        flex-direction:column;
+      flex-direction:column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
         
     }
 
 .row3 {
 display: flex;
-flex-direction: row;
-    border: 1px solid black;
-    gap: 5px;
+   
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.aj {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 10px;
+padding: 10px;
+
+}
+
+.dzax {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 10px;
+padding: 10px;
+
 }
 
 .mijin {
@@ -64,12 +77,14 @@ height: 10px;
 width: 60px;
 display: flex;
 border: 1px solid black;
-gap: 5px;
+justify-content: center;
+align-items: center;
+gap: 10px;
 }
 
 .mejtex {
     background-color:#787885;
     width: 150px;
-    aspect-ratio: 1/1;border: 1px solid black;
+    aspect-ratio: 1/1; 
 }
    
