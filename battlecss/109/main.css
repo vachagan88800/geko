@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.container {
+    background-color: #C74E4E;
+    width: 400px;
+    height: 300px;
+    padding: 90px;
+    
+
+}
+
+.row {
+    
+display: flex;
+flex-direction: column;
+}
+
+.col
+{border: 1px solid black;
+
+}
+
+.arajin { 
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.dexin {
+    width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: yellow;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.spitak  {
+    width: 20px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: white;
+}

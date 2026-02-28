@@ -1,0 +1,24 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  .container {
+      width: 400px;
+      height: 300px;
+      background: #62306D;
+      display:flex;
+      justify-content: center;
+      align-items:center;
+  }
+
+  .klor {
+      width: 200px;
+      aspect-ratio: 1/1;
+      border: 20px solid #F7EC7D ;
+      border-radius: 50%;
+      border-top-color:#E38F66;
+      rotate: -0.125turn;
+      background-color: transparent;
+  }
