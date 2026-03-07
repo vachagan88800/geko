@@ -1,0 +1,49 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+     width: 100vh;
+    aspect-ratio: 2/1;
+    background: rgb(80, 79, 79);
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:1fr 2fr 2fr ;
+    gap: 10px;
+    padding: 10px;
+ 
+}
+
+.r1 {
+
+    background-color: #FD6057;
+}
+.r2 {
+background-color: #FD815B;
+}
+
+.r3 {
+grid-area: 1/1/2/-1;
+background-color: #FEA062;
+}
+
+.r4 {
+grid-area: 2/1/4/2;
+background-color:#02A787
+}
+
+.r5 {
+
+background-color:#1CC1A1
+}
+
+.r6 {
+grid-area: 2/2/3/4;
+background-color:#35DABA
+}
+
+.r7 {
+   background-color:#35DABA; 
+}

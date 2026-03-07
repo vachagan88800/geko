@@ -10,12 +10,13 @@
         display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     
   }
 .grid {
   display:grid;
     grid-template-columns:repeat(3, 1fr);
-   
+
 }
   .klor {
     width:150px;
