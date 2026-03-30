@@ -220,6 +220,7 @@ button {
     }
  
     .card-image {
+        padding: 50px;
       background: var(--color-neutral-7);
       height: 160px;
       display: flex;
@@ -241,7 +242,7 @@ button {
     }
  
     .card-body {
-      padding: 16px 18px 18px;
+      padding:50px;
     }
  
     .car-name {
@@ -292,27 +293,23 @@ button {
       font-weight: 600;
     }
  
-    .location svg {
-      width: 15px;
-      height: 12px;
-      fill: var(--color-neutral-2);
 
-    }
  
     .btn-rent {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
+      padding: 10px 60px 10px 10px;
       gap: 8px;
       width: 100%;
-      padding: 10px 16px;
-      background: transparent;
+      
+      background: var(--color-white);
       color: var(--color-neutral-2);
       border: 1.5px solid var(--color-neutral-5);
       
       font-family: 'Nunito', sans-serif;
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 500;
       cursor: pointer;
       
       text-decoration: none;
@@ -323,12 +320,13 @@ button {
       color: var(--color-white);
       border: var(--color-primary);
     }
- 
-    .btn-rent svg {
-      width: px;
-      height: 15px;
-      fill: currentColor;
+    .btn-read:hover {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: var(--color-primary);
     }
+ 
+
  
     .see-all-wrap {
   
@@ -353,6 +351,95 @@ button {
     .btn-see-all:hover {
       background: var(--color-primary);
       transform: translateY(-2px);
+    }
+
+    .services_wrap {
+        height: 1041px;
+        background: url(img/bakground3.png) no-repeat;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .common_hgroup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .common_title {
+        color: var(--color-primary);
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .common_heading {
+        color: var(--color-neutral-2);
+        font-size: var(--font-size-8);
+    }
+    .services_desc {
+        color: var(--color-neutral-4);
+        font-size: var(--font-size-2);
+        
+    }
+     .services_item {
+       
+        color: var(--color-white);
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 65px;
+    }
+    .instant {
+        background: url(img/instant.png);
+
+    }
+    .private {
+        background: url(img/private.png);
+     
+    }
+
+    .long {
+        background: url(img/long.png);
+    
+    }
+
+    .btn-read {
+        display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      
+      background: var(--color-white);
+      color: var(--color-neutral-2);
+      border: 1.5px solid var(--color-neutral-5);
+      
+      font-family: 'Nunito', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+      
+      text-decoration: none;
+    }
+.services_icon {
+    font-size: 100px;
+}
+
+.services_name {
+    font-size: 26px;
+
+}
+.services_text {
+    max-width: 267px;
+}
+    .services_group {
+        display: flex;
+        flex-direction: row;
+        gap:17px;
+        padding: 100px;
     }
  
     @media (max-width: 700px) {

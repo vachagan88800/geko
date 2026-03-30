@@ -1,0 +1,304 @@
+:root {
+    /* Colors */
+    --color-primary:#F55757;
+    --color-button:#FBB7B7;
+    
+    --color-black:#000000;
+    --color-neutral-1:#222222;
+    --color-neutral-2:#444444;
+    --color-neutral-3:#666666;
+    --color-neutral-4:#888888;
+    --color-neutral-5:#aaaaaa;
+    --color-neutral-6:#cccccc;
+    --color-neutral-7:#eeeeee;
+    --color-white:#ffffff;
+
+    /* Font Sizes  */
+
+    --font-size-1: 12px;
+    --font-size-2: 15px;
+    --font-size-3: 16px;
+    --font-size-4: 18px;
+    --font-size-5: 20px;
+    --font-size-6: 26px;
+    --font-size-7: 33px;
+    --font-size-8: 48px;
+    --font-size-9: 56px;
+    --font-size-10: 64px;
+
+    /* Font Families  */
+    --font-family-main: "Lato", sans-serif;
+
+    /* Radius  */
+    --radius-1:8px;
+    --radius-2:12px;
+    --radius-3:16px;
+    --radius-4:24px;
+    --radius-i: calc(infinity *1px);
+
+    /* Transition  */
+    --transition: 0.3s;
+
+}
+
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-main);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+
+.header {
+
+    position: relative;
+
+}
+
+.header_wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_nav {
+    display: flex;
+       justify-content: center;
+    align-items: center;
+    color: var(--color-neutral-2);
+}
+
+.header_navlist {
+    display: flex;
+    flex-direction: row;
+    gap: 33px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  
+.container {
+    width: 90%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.hero {
+    background: url(img/Group28.png) no-repeat right center / 50%;
+    height: 100vh;
+    max-height: 900px;
+
+}
+
+.hero_wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 120px 0;
+    
+}
+
+.hero_block {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    width: 60%;
+    max-width: 800px;
+    gap: 20px;
+
+}
+
+.hero_title {
+    font-size: var(--font-size-9);
+    font-weight: 700;
+    color: var(--color-neutral-2);
+    line-height: 1.2;
+    max-width: 780px;
+}
+
+.hero_text {
+    font-size: var(--font-size-5);
+    color: var(--color-neutral-3);
+      max-width: 586px;
+}
+
+.hero_buttons {
+    padding: 40px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.button {
+    background-color: var(--color-white);
+}
+.hero1 {
+    width: 182px;
+    height: 64px;
+    border: #F55757 solid 2px;
+    font-size: var(--font-size-5);
+    color: var(--color-primary);
+}
+
+.hero2 {
+    width: 140px;
+    height: 64px;
+    border: #F55757 solid 2px;
+    font-size: var(--font-size-5);
+    color: var(--color-primary);
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.brands {
+    padding: 100px 0; 
+}
+.brands_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+
+}
+
+.brands_logo {
+    height: 64px;
+    filter: grayscale();
+    opacity: 0.5;
+}
+.brands_logo > img {
+    height: 100%;
+}
+
+ .choose_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        
+    }
+
+
+.common_hgroup {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .common_title {
+        color: var(--color-button);
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 120%;
+    }
+
+    .common_heading {
+        color: var(--color-neutral-2);
+        font-size: var(--font-size-8);
+        font-weight: 500;
+        line-height: 120%;
+    }
+
+    .common_text {
+color: var(--color-neutral-4);
+font-weight: 400;
+font-size: var(--font-size-2);
+
+    }
+
+   
+    .choose_cards {
+display: flex;
+gap:22px;
+padding: 50px 0;
+
+    }
+
+    .choose_card {
+        padding: 50px 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .choose_card:hover {
+        translate: 0 -10px ;
+        transition: var(--transition);
+        box-shadow: 10px;
+    }
+
+    .card_img {
+        object-fit: contain;
+              background-color: var(--color-neutral-7);
+    }
+
+    
+    .car_name {
+        font-size: var(--font-size-7);
+        color: var(--color-neutral-3);
+    }
+
+.price_location {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 1px;
+}
+.amount {
+    font-size: var(--font-size-7);
+    font-weight: 900;
+}
+.rent_btn {
+    
+    text-align: center;
+    background-color: var(--color-white);
+    border: var(--color-neutral-3) solid 2px;
+    height: 64px;
+    width: 368px;
+    color: #666666;
+    font-size: var(--font-size-5);
+    font-weight: 500;
+}
+.rent_btn:hover {
+    border: none;
+}
+
+    .see_all {
+        
+        height: 64px;
+        width: 116px;
+    }
+
+    .see_all:hover {
+        border: none;
+    }
+
+    
+
+
+
+
+
+
