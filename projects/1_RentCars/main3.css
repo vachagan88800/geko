@@ -110,7 +110,7 @@ ul, ol {
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: 120px 0;
+
     
 }
 
@@ -118,7 +118,7 @@ ul, ol {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: start;
     width: 60%;
     max-width: 800px;
@@ -196,6 +196,7 @@ ul, ol {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
         
     }
 
@@ -237,10 +238,11 @@ padding: 50px 0;
     }
 
     .choose_card {
-        padding: 50px 30px;
+        
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        box-shadow: 0 20px 12px rgba(0,0,0,0.07);
+        justify-content: center;
     }
 
     .choose_card:hover {
@@ -249,10 +251,11 @@ padding: 50px 0;
         box-shadow: 10px;
     }
 
-    .card_img {
+    .card_img  {
         object-fit: contain;
               background-color: var(--color-neutral-7);
-    }
+   
+            }
 
     
     .car_name {
@@ -286,8 +289,9 @@ padding: 50px 0;
 }
 
     .see_all {
-        
-        height: 64px;
+        color: var(--color-primary);
+        border: 2px solid var(--color-primary);
+        height: 58px;
         width: 116px;
     }
 
@@ -295,10 +299,178 @@ padding: 50px 0;
         border: none;
     }
 
+.services {
+    padding: 20px;
+    display: flex;
+        background:url(img/bakground3.png) no-repeat center,rgba(255, 255, 255, 0.6) ;
+    background-blend-mode: lighten;
+    min-height: 90vh;
+    background-size: cover;
+
+
+}
+.services_wrap {
+justify-content: center;
+align-items: center;
+    display: flex;
+    flex-direction: column;
+  
+    gap: 20px;
+}
+
+.services_group {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    width: 100%
+}
+
+.services_item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+    color: var(--color-white);
+
+
+}
+
+.services_item:hover {
+    border-bottom: 2px solid var(--color-primary);
+
+}
+
+.read_btn {
+    width: 144px;
+    height: 58px;
+border: none;
+}
+
+.services_icon {
+    font-size: 50px;
+    color: var(--color-white);
+
+}
+
+.services_name {
+    font-size: var(--font-size-6);
+}
+
+.services_text {
+    font-size: var(--font-size-2);
+}
     
+    .instant {
+        background: url(img/instant.png) center no-repeat;
 
+    }
+    .private {
+        background: url(img/private.png) center no-repeat;
+     
+    }
 
+    .long {
+        background: url(img/long.png) center no-repeat;
+   
+    }
 
+.advantages {
+
+}
+.advantages_wrap{
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.advantages_group{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.advantages_item{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px;
+
+}
+.advantages_icon{
+font-size: var(--font-size-10);
+grid-row: span 2;
+color: var(--color-primary);
+}
+.advantages_name{
+
+}
+.advantages_text{
+
+}
+
+.common_hgroup_contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.contacts_wrap {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    
+    
+}
+
+.contacts_icon {
+    color: var(--color-primary);
+}
+
+.contacts_media {
+    display: flex;
+    gap: 5px;
+
+}
+
+.contacts_media_link {
+        color: var(--color-primary);
+        padding: 5px;
+}
+
+.contacts_media_link:hover {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+    cursor: pointer;
+}
+
+.contacts_group {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    max-width: 500px;
+}
+.contacts_details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    align-items: start;
+    justify-content: start;
+
+}
+.contacts_map {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    flex-grow: 1;
+}
+.maps_btn {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    width: 198px;
+    height: 58px;
+}
 
 
 
