@@ -471,6 +471,96 @@ color: var(--color-primary);
     width: 198px;
     height: 58px;
 }
+.review{
 
+}
+.review_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 0;
+}
+.review_group{
+    display: flex;
+    gap: 20px;
+
+}
+.review_card{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+.review_rating{
+    display: flex;
+    justify-content: space-between;
+
+}
+.review_sign{
+    color: var(--color-primary);
+
+}
+.review_stars{
+    color: var(--color-primary);
+    
+
+}
+.review_text{
+    color: var(--color-neutral-3);
+
+}
+.review_user{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+
+}
+.review_image{
+    grid-row: span 2;
+
+}
+.review_name{
+    color: var(--color-neutral-2);
+
+}
+.review_location{
+    color: var(--color-neutral-2);
+
+}
+.review_btn {
+
+}
+
+
+.subscribe{
+    background-color:var(--color-button) ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding: 50px 0;
+    gap: 20px;
+}
+.subscribe_title{
+    color: var(--color-neutral-2)
+
+}
+.subscribe{
+    color: #666666 ;
+}
+.subscribe_input {
+    border: none;
+    padding: 10px;
+    width: 460px;
+}
+.subscribe_btn{
+    height: 36px;
+    border: none;
+    width: 100px;
+    color: var(--color-primary);
+}
 
 
