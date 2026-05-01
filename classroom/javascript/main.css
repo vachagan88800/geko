@@ -1,0 +1,46 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hall{
+
+    height: 90vh;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px
+}
+
+.seat {
+    width: 50px;
+    aspect-ratio: 1/1;
+    border: 1px solid black;
+}
+
+.seat_selected {
+    background-color: orange;
+}
+
+.seat_occupied {
+    background-color: red;
+}
+
+.seat:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+
+.reserve_btn {
+    padding: 10px;
+
+}
+

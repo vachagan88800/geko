@@ -238,7 +238,7 @@ padding: 50px 0;
     }
 
     .choose_card {
-        
+        transition: var(--transition);
         display: flex;
         flex-direction: column;
         box-shadow: 0 20px 12px rgba(0,0,0,0.07);
@@ -326,6 +326,7 @@ align-items: center;
 }
 
 .services_item {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -333,6 +334,8 @@ align-items: center;
     gap: 30px;
     padding: 20px;
     color: var(--color-white);
+    min-height: 300px; 
+    
 
 
 }
@@ -364,16 +367,17 @@ border: none;
     
     .instant {
         background: url(img/instant.png) center no-repeat;
+        background-size: cover;
 
     }
     .private {
         background: url(img/private.png) center no-repeat;
-     
+     background-size: cover;
     }
 
     .long {
         background: url(img/long.png) center no-repeat;
-   
+   background-size: cover;
     }
 
 .advantages {

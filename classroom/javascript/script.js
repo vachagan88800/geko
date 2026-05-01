@@ -1,2 +1,4 @@
-let usano
-x = "soxomon";
+const seat = document.getElementsByClassName('seat');
+ 
+
+ 
