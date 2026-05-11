@@ -1,0 +1,39 @@
+.student-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.student-card__info h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #212529;
+}
+
+.student-card__info p {
+  font-size: 14px;
+  color: #495057;
+  margin-bottom: 2px;
+}
+
+.student-card__delete {
+  background: rgba(0, 0, 0, 0.15);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #212529;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.student-card__delete:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
