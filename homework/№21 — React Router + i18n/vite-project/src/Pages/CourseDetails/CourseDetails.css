@@ -1,0 +1,35 @@
+.course-details {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.course-details h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #212529;
+}
+
+.course-details p {
+  font-size: 16px;
+  color: #495057;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.course-details a {
+  display: inline-block;
+  margin-top: 24px;
+  padding: 10px 20px;
+  background: #339af0;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.course-details a:hover {
+  background: #228be6;
+}

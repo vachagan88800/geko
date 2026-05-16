@@ -1,0 +1,21 @@
+{
+  "home": {
+    "title": "Welcome to Course Platform",
+    "description": "Learn programming with the best teachers.",
+    "button": "View Courses"
+  },
+  "courses": {
+    "title": "All Courses",
+    "teacher": "Teacher"
+  },
+  "details": {
+    "teacher": "Teacher",
+    "description": "Description",
+    "back": "Back to Courses"
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "back": "Go Home"
+  },
+  "language": "Language"
+}
