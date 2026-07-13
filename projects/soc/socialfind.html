@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SocialFind — Find every product sold on social media</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text-primary: #1a1a18;
+      --text-secondary: #5f5e5a;
+      --text-muted: #888780;
+      --text-accent: #185fa5;
+      --surface-0: #f1efe8;
+      --surface-1: #f7f6f2;
+      --surface-2: #ffffff;
+      --border: rgba(0,0,0,0.10);
+      --border-strong: rgba(0,0,0,0.18);
+      --border-accent: #b5d4f4;
+      --bg-accent: #e6f1fb;
+      --bg-success: #eaf3de;
+      --bg-warning: #faeeda;
+      --fill-accent: #378add;
+      --on-accent: #ffffff;
+      --radius: 8px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #e8e6de;
+        --text-secondary: #a8a79f;
+        --text-muted: #6b6a65;
+        --text-accent: #85b7eb;
+        --surface-0: #1a1a18;
+        --surface-1: #222220;
+        --surface-2: #2c2c2a;
+        --border: rgba(255,255,255,0.08);
+        --border-strong: rgba(255,255,255,0.14);
+        --border-accent: #185fa5;
+        --bg-accent: #0c447c;
+        --bg-success: #27500a;
+        --bg-warning: #633806;
+        --fill-accent: #378add;
+        --on-accent: #ffffff;
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background: var(--surface-0);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; cursor: pointer; }
+
+    /* NAV */
+    .sf-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; border-bottom: 0.5px solid var(--border);
+      background: var(--surface-2); position: sticky; top: 0; z-index: 100;
+    }
+    .sf-logo { font-size: 18px; font-weight: 600; letter-spacing: -0.5px; }
+    .sf-logo span { color: var(--text-accent); }
+    .sf-nav-links { display: flex; gap: 1.5rem; font-size: 13px; color: var(--text-secondary); }
+    .sf-nav-links a:hover { color: var(--text-primary); }
+    .sf-nav-actions { display: flex; gap: 8px; align-items: center; }
+    .btn-ghost {
+      font-size: 13px; padding: 6px 14px; border-radius: var(--radius);
+      border: 0.5px solid var(--border-strong); background: transparent;
+      color: var(--text-primary); cursor: pointer;
+    }
+    .btn-ghost:hover { background: var(--surface-1); }
+    .btn-primary {
+      font-size: 13px; padding: 6px 14px; border-radius: var(--radius);
+      border: none; background: var(--fill-accent); color: var(--on-accent); cursor: pointer;
+    }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* HERO */
+    .sf-hero {
+      padding: 5rem 2rem 4rem; text-align: center;
+      background: var(--surface-2); border-bottom: 0.5px solid var(--border);
+    }
+    .sf-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 20px;
+      border: 0.5px solid var(--border-accent); background: var(--bg-accent);
+      color: var(--text-accent); font-size: 12px; margin-bottom: 1.5rem;
+    }
+    .sf-hero h1 {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 600;
+      letter-spacing: -1.5px; line-height: 1.1;
+      max-width: 700px; margin: 0 auto 1rem;
+    }
+    .sf-hero h1 em { font-style: normal; color: var(--text-accent); }
+    .sf-hero p {
+      font-size: 16px; color: var(--text-secondary);
+      max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.6;
+    }
+    .sf-hero-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn-large { padding: 12px 24px; font-size: 14px; border-radius: var(--radius); cursor: pointer; font-weight: 500; }
+    .btn-large.primary { background: var(--fill-accent); color: var(--on-accent); border: none; }
+    .btn-large.primary:hover { opacity: 0.9; }
+    .btn-large.secondary {
+      background: transparent; color: var(--text-primary);
+      border: 0.5px solid var(--border-strong);
+    }
+    .btn-large.secondary:hover { background: var(--surface-1); }
+
+    /* SEARCH */
+    .sf-search-wrap { max-width: 680px; margin: 2.5rem auto 0; }
+    .sf-search {
+      display: flex; align-items: center;
+      border: 0.5px solid var(--border-strong); border-radius: 12px;
+      background: var(--surface-1); overflow: hidden; padding: 4px;
+    }
+    .sf-search input {
+      flex: 1; border: none; outline: none; background: transparent;
+      padding: 10px 12px; font-size: 14px; color: var(--text-primary);
+    }
+    .sf-search-btn {
+      padding: 9px 18px; background: var(--fill-accent); color: var(--on-accent);
+      border: none; border-radius: 8px; font-size: 13px; cursor: pointer;
+      display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .sf-filters { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+    .sf-filter-pill {
+      padding: 5px 12px; border-radius: 20px; border: 0.5px solid var(--border);
+      background: var(--surface-2); font-size: 12px; color: var(--text-secondary);
+      cursor: pointer; transition: all 0.15s;
+    }
+    .sf-filter-pill:hover, .sf-filter-pill.active {
+      border-color: var(--border-accent); color: var(--text-accent); background: var(--bg-accent);
+    }
+
+    /* PLATFORMS */
+    .sf-platforms {
+      display: flex; justify-content: center; gap: 1.5rem;
+      padding: 1.5rem 2rem; flex-wrap: wrap;
+      background: var(--surface-1); border-bottom: 0.5px solid var(--border);
+    }
+    .sf-plat { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+    .sf-plat-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+    /* SECTION */
+    .sf-section { padding: 3rem 2rem; }
+    .sf-section-header {
+      display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem;
+    }
+    .sf-section-header h2 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
+    .sf-section-header a { font-size: 13px; color: var(--text-accent); cursor: pointer; }
+
+    /* PRODUCT GRID */
+    .sf-products { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .sf-card {
+      background: var(--surface-2); border: 0.5px solid var(--border);
+      border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.15s, transform 0.15s;
+    }
+    .sf-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+    .sf-card-img {
+      width: 100%; height: 140px; background: var(--surface-1);
+      display: flex; align-items: center; justify-content: center; font-size: 40px;
+    }
+    .sf-card-body { padding: 10px; }
+    .sf-card-title { font-size: 13px; font-weight: 500; margin-bottom: 6px; line-height: 1.3; }
+    .sf-card-meta { display: flex; align-items: center; justify-content: space-between; }
+    .sf-card-price { font-size: 13px; font-weight: 600; color: var(--text-accent); }
+    .sf-card-plat { font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 4px; }
+    .sf-card-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+    .sf-tag {
+      font-size: 10px; padding: 2px 6px; border-radius: 4px;
+      background: var(--surface-0); color: var(--text-muted);
+    }
+    .sf-card-actions { display: flex; gap: 4px; margin-top: 8px; }
+    .sf-card-btn {
+      flex: 1; padding: 5px; border-radius: 6px; border: 0.5px solid var(--border);
+      background: transparent; font-size: 11px; color: var(--text-secondary);
+      cursor: pointer; text-align: center; transition: all 0.15s;
+    }
+    .sf-card-btn:hover { border-color: var(--border-strong); color: var(--text-primary); }
+    .sf-card-btn.save { color: var(--text-accent); border-color: var(--border-accent); background: var(--bg-accent); }
+
+    /* CATEGORIES */
+    .sf-categories { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+    .sf-cat {
+      padding: 14px 10px; border-radius: 12px; border: 0.5px solid var(--border);
+      background: var(--surface-2); text-align: center; cursor: pointer; transition: all 0.15s;
+    }
+    .sf-cat:hover { border-color: var(--border-accent); background: var(--bg-accent); }
+    .sf-cat-icon { font-size: 24px; margin-bottom: 6px; }
+    .sf-cat-label { font-size: 12px; color: var(--text-secondary); }
+
+    /* INFLUENCERS */
+    .sf-influencers { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+    .sf-inf {
+      background: var(--surface-2); border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 16px; cursor: pointer; transition: border-color 0.15s;
+    }
+    .sf-inf:hover { border-color: var(--border-accent); }
+    .sf-inf-avatar {
+      width: 48px; height: 48px; border-radius: 50%; background: var(--bg-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 10px;
+    }
+    .sf-inf-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; display: flex; align-items: center; gap: 4px; }
+    .sf-inf-niche { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; }
+    .sf-inf-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 10px; }
+    .sf-stat { background: var(--surface-1); border-radius: 6px; padding: 6px 8px; }
+    .sf-stat-val { font-size: 13px; font-weight: 600; }
+    .sf-stat-lbl { font-size: 10px; color: var(--text-muted); }
+    .sf-inf-plats { display: flex; gap: 4px; margin-bottom: 10px; flex-wrap: wrap; }
+    .sf-plat-badge {
+      font-size: 10px; padding: 2px 8px; border-radius: 10px;
+      border: 0.5px solid var(--border); color: var(--text-muted);
+    }
+    .sf-inf-price { font-size: 12px; color: var(--text-secondary); margin-bottom: 8px; }
+    .sf-inf-price strong { color: var(--text-primary); }
+    .sf-inf-contact {
+      width: 100%; padding: 7px; border-radius: 6px;
+      border: 0.5px solid var(--border-accent); background: var(--bg-accent);
+      color: var(--text-accent); font-size: 12px; cursor: pointer; transition: opacity 0.15s;
+    }
+    .sf-inf-contact:hover { opacity: 0.8; }
+    .sf-verified { color: var(--text-accent); font-size: 13px; }
+
+    /* STATS BAR */
+    .sf-stats {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0; background: var(--surface-1);
+      border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+    }
+    .sf-stat-big {
+      text-align: center; padding: 2rem 1rem;
+      border-right: 0.5px solid var(--border);
+    }
+    .sf-stat-big:last-child { border-right: none; }
+    .sf-stat-big .num { font-size: 32px; font-weight: 700; letter-spacing: -1px; }
+    .sf-stat-big .lbl { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* AI BANNER */
+    .sf-ai-banner {
+      margin: 3rem 2rem; border-radius: 16px;
+      border: 0.5px solid var(--border-accent); background: var(--bg-accent);
+      padding: 2.5rem; display: flex; align-items: center;
+      justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+    }
+    .sf-ai-banner h3 { font-size: 22px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .sf-ai-banner p { font-size: 14px; color: var(--text-secondary); max-width: 460px; line-height: 1.6; }
+    .sf-ai-features { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+    .sf-ai-feat {
+      font-size: 11px; padding: 4px 10px; border-radius: 10px;
+      border: 0.5px solid var(--border-accent); color: var(--text-accent);
+      background: var(--surface-2);
+    }
+
+    /* WHY */
+    .sf-why { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .sf-why-item {
+      padding: 1.25rem; border-radius: 12px;
+      border: 0.5px solid var(--border); background: var(--surface-2);
+      transition: border-color 0.15s;
+    }
+    .sf-why-item:hover { border-color: var(--border-accent); }
+    .sf-why-icon { font-size: 22px; margin-bottom: 10px; color: var(--text-accent); }
+    .sf-why-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .sf-why-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .sf-testimonials { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+    .sf-testi {
+      background: var(--surface-2); border: 0.5px solid var(--border);
+      border-radius: 12px; padding: 1.25rem;
+    }
+    .sf-testi-text { font-size: 13px; line-height: 1.7; color: var(--text-secondary); margin-bottom: 14px; }
+    .sf-testi-author { display: flex; align-items: center; gap: 10px; }
+    .sf-testi-avatar {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: var(--text-accent);
+      border: 0.5px solid var(--border-accent); flex-shrink: 0;
+    }
+    .sf-testi-name { font-size: 13px; font-weight: 600; }
+    .sf-testi-role { font-size: 11px; color: var(--text-muted); }
+
+    /* CTA FOOTER */
+    .sf-cta-footer {
+      padding: 5rem 2rem; text-align: center;
+      border-top: 0.5px solid var(--border);
+      background: var(--surface-2);
+    }
+    .sf-cta-footer h2 { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 0.75rem; }
+    .sf-cta-footer p { font-size: 15px; color: var(--text-secondary); margin-bottom: 2rem; }
+    .sf-cta-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    .sf-footer {
+      padding: 1.5rem 2rem; border-top: 0.5px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; background: var(--surface-1);
+    }
+    .sf-footer-links { display: flex; gap: 1.25rem; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; }
+    .sf-footer-links a:hover { color: var(--text-primary); }
+    .sf-footer-copy { font-size: 12px; color: var(--text-muted); }
+
+    /* VIEW TOGGLE */
+    .sf-view-toggle { display: flex; gap: 4px; }
+    .sf-toggle-btn {
+      padding: 5px 10px; border-radius: 6px; border: 0.5px solid var(--border);
+      background: transparent; font-size: 12px; color: var(--text-muted); cursor: pointer;
+    }
+    .sf-toggle-btn.active { background: var(--surface-2); color: var(--text-primary); border-color: var(--border-strong); }
+
+    .divider { height: 0.5px; background: var(--border); }
+
+    @media (max-width: 600px) {
+      .sf-nav-links { display: none; }
+      .sf-hero { padding: 3rem 1rem 2rem; }
+      .sf-section { padding: 2rem 1rem; }
+      .sf-ai-banner { padding: 1.5rem; }
+      .sf-ai-banner > *:last-child { width: 100%; }
+      .sf-stats { grid-template-columns: 1fr 1fr; }
+      .sf-stat-big { border-right: none; border-bottom: 0.5px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="sf-nav">
+    <div class="sf-logo">Social<span>Find</span></div>
+    <div class="sf-nav-links">
+      <a href="#">Explore</a>
+      <a href="#">Influencers</a>
+      <a href="#">For businesses</a>
+      <a href="#">Pricing</a>
+    </div>
+    <div class="sf-nav-actions">
+      <button class="btn-ghost">Sign in</button>
+      <button class="btn-primary">Get started</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="sf-hero">
+    <div class="sf-badge">
+      <i class="ti ti-sparkles"></i> AI-powered social commerce discovery
+    </div>
+    <h1>Find every product sold on <em>social media</em></h1>
+    <p>Products from Instagram, TikTok, Facebook, and more — searchable in one place, powered by AI that never stops crawling.</p>
+    <div class="sf-hero-btns">
+      <button class="btn-large primary">Start searching</button>
+      <button class="btn-large secondary">Register your business</button>
+    </div>
+    <div class="sf-search-wrap">
+      <div class="sf-search">
+        <i class="ti ti-search" style="font-size:16px;color:var(--text-muted);margin-left:8px"></i>
+        <input type="text" placeholder="blue sofa, gaming laptop under $1200, nike air force..." />
+        <button class="sf-search-btn">
+          <i class="ti ti-sparkles" style="font-size:13px"></i> AI Search
+        </button>
+      </div>
+      <div class="sf-filters">
+        <span class="sf-filter-pill active">All categories</span>
+        <span class="sf-filter-pill">🇦🇲 Armenia</span>
+        <span class="sf-filter-pill">Instagram</span>
+        <span class="sf-filter-pill">TikTok</span>
+        <span class="sf-filter-pill">Facebook</span>
+        <span class="sf-filter-pill">Under $100</span>
+        <span class="sf-filter-pill">Verified sellers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLATFORMS -->
+  <div class="sf-platforms">
+    <div class="sf-plat"><span class="sf-plat-dot" style="background:#E1306C"></span> Instagram</div>
+    <div class="sf-plat"><span class="sf-plat-dot" style="background:#000000"></span> TikTok</div>
+    <div class="sf-plat"><span class="sf-plat-dot" style="background:#1877F2"></span> Facebook</div>
+    <div class="sf-plat"><span class="sf-plat-dot" style="background:#FF0000"></span> YouTube</div>
+    <div class="sf-plat"><span class="sf-plat-dot" style="background:#0088CC"></span> Telegram</div>
+    <div class="sf-plat"><span class="sf-plat-dot" style="background:#E60023"></span> Pinterest</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TRENDING PRODUCTS -->
+  <div class="sf-section">
+    <div class="sf-section-header">
+      <h2>Trending products</h2>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div class="sf-view-toggle">
+          <button class="sf-toggle-btn active" title="Grid view"><i class="ti ti-layout-grid"></i></button>
+          <button class="sf-toggle-btn" title="List view"><i class="ti ti-list"></i></button>
+        </div>
+        <a href="#">See all →</a>
+      </div>
+    </div>
+    <div class="sf-products">
+      <div class="sf-card">
+        <div class="sf-card-img">👟</div>
+        <div class="sf-card-body">
+          <div class="sf-card-title">Nike Air Force 1 Low — White/Black</div>
+          <div class="sf-card-meta">
+            <span class="sf-card-price">$95</span>
+            <span class="sf-card-plat"><span class="sf-plat-dot" style="background:#E1306C;width:6px;height:6px"></span> Instagram</span>
+          </div>
+          <div class="sf-card-tags"><span class="sf-tag">shoes</span><span class="sf-tag">nike</span><span class="sf-tag">streetwear</span></div>
+          <div class="sf-card-actions">
+            <button class="sf-card-btn save">♡ Save</button>
+            <button class="sf-card-btn">↗ View post</button>
+          </div>
+        </div>
+      </div>
+      <div class="sf-card">
+        <div class="sf-card-img">🛋️</div>
+        <div class="sf-card-body">
+          <div class="sf-card-title">Scandinavian 3-seat sofa — sage green</div>
+          <div class="sf-card-meta">
+            <span class="sf-card-price">$420</span>
+            <span class="sf-card-plat"><span class="sf-plat-dot" style="background:#1877F2;width:6px;height:6px"></span> Facebook</span>
+          </div>
+          <div class="sf-card-tags"><span class="sf-tag">furniture</span><span class="sf-tag">sofa</span></div>
+          <div class="sf-card-actions">
+            <button class="sf-card-btn save">♡ Save</button>
+            <button class="sf-card-btn">↗ View post</button>
+          </div>
+        </div>
+      </div>
+      <div class="sf-card">
+        <div class="sf-card-img">💻</div>
+        <div class="sf-card-body">
+          <div class="sf-card-title">MacBook Pro M3 14" — Space Black</div>
+          <div class="sf-card-meta">
+            <span class="sf-card-price">$1,799</span>
+            <span class="sf-card-plat"><span class="sf-plat-dot" style="background:#000000;width:6px;height:6px"></span> TikTok</span>
+          </div>
+          <div class="sf-card-tags"><span class="sf-tag">tech</span><span class="sf-tag">apple</span></div>
+          <div class="sf-card-actions">
+            <button class="sf-card-btn save">♡ Save</button>
+            <button class="sf-card-btn">↗ View post</button>
+          </div>
+        </div>
+      </div>
+      <div class="sf-card">
+        <div class="sf-card-img">💍</div>
+        <div class="sf-card-body">
+          <div class="sf-card-title">Gold-plated minimal ring set (3pc)</div>
+          <div class="sf-card-meta">
+            <span class="sf-card-price">$38</span>
+            <span class="sf-card-plat"><span class="sf-plat-dot" style="background:#E1306C;width:6px;height:6px"></span> Instagram</span>
+          </div>
+          <div class="sf-card-tags"><span class="sf-tag">jewelry</span><span class="sf-tag">gold</span></div>
+          <div class="sf-card-actions">
+            <button class="sf-card-btn save">♡ Save</button>
+            <button class="sf-card-btn">↗ View post</button>
+          </div>
+        </div>
+      </div>
+      <div class="sf-card">
+        <div class="sf-card-img">🎮</div>
+        <div class="sf-card-body">
+          <div class="sf-card-title">ASUS ROG Ally gaming console</div>
+          <div class="sf-card-meta">
+            <span class="sf-card-price">$699</span>
+            <span class="sf-card-plat"><span class="sf-plat-dot" style="background:#FF0000;width:6px;height:6px"></span> YouTube</span>
+          </div>
+          <div class="sf-card-tags"><span class="sf-tag">gaming</span><span class="sf-tag">console</span></div>
+          <div class="sf-card-actions">
+            <button class="sf-card-btn save">♡ Save</button>
+            <button class="sf-card-btn">↗ View post</button>
+          </div>
+        </div>
+      </div>
+      <div class="sf-card">
+        <div class="sf-card-img">👜</div>
+        <div class="sf-card-body">
+          <div class="sf-card-title">Mini tote bag — tan leather</div>
+          <div class="sf-card-meta">
+            <span class="sf-card-price">$64</span>
+            <span class="sf-card-plat"><span class="sf-plat-dot" style="background:#E60023;width:6px;height:6px"></span> Pinterest</span>
+          </div>
+          <div class="sf-card-tags"><span class="sf-tag">fashion</span><span class="sf-tag">bags</span></div>
+          <div class="sf-card-actions">
+            <button class="sf-card-btn save">♡ Save</button>
+            <button class="sf-card-btn">↗ View post</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CATEGORIES -->
+  <div class="sf-section">
+    <div class="sf-section-header">
+      <h2>Browse categories</h2>
+      <a href="#">All categories →</a>
+    </div>
+    <div class="sf-categories">
+      <div class="sf-cat"><div class="sf-cat-icon">👗</div><div class="sf-cat-label">Fashion</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">💻</div><div class="sf-cat-label">Electronics</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">🛋️</div><div class="sf-cat-label">Furniture</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">💄</div><div class="sf-cat-label">Beauty</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">💪</div><div class="sf-cat-label">Fitness</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">🍕</div><div class="sf-cat-label">Food</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">🚗</div><div class="sf-cat-label">Automotive</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">💍</div><div class="sf-cat-label">Jewelry</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">🐾</div><div class="sf-cat-label">Pets</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">📚</div><div class="sf-cat-label">Books</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">🎮</div><div class="sf-cat-label">Gaming</div></div>
+      <div class="sf-cat"><div class="sf-cat-icon">🏠</div><div class="sf-cat-label">Home</div></div>
+    </div>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="sf-stats">
+    <div class="sf-stat-big"><div class="num">2.4M+</div><div class="lbl">Products indexed</div></div>
+    <div class="sf-stat-big"><div class="num">180K+</div><div class="lbl">Verified businesses</div></div>
+    <div class="sf-stat-big"><div class="num">48K+</div><div class="lbl">Active influencers</div></div>
+    <div class="sf-stat-big"><div class="num">6</div><div class="lbl">Platforms connected</div></div>
+  </div>
+
+  <!-- AI BANNER -->
+  <div class="sf-ai-banner">
+    <div>
+      <div class="sf-badge" style="margin-bottom:1rem"><i class="ti ti-brain"></i> How AI detection works</div>
+      <h3>Connect once. AI does the rest.</h3>
+      <p>Link your social accounts and our AI automatically scans every post — extracting product names, prices, brands, and categories. No manual listings required.</p>
+      <div class="sf-ai-features">
+        <span class="sf-ai-feat">Image OCR</span>
+        <span class="sf-ai-feat">Video analysis</span>
+        <span class="sf-ai-feat">Price extraction</span>
+        <span class="sf-ai-feat">Object recognition</span>
+        <span class="sf-ai-feat">Duplicate detection</span>
+        <span class="sf-ai-feat">Fraud detection</span>
+      </div>
+    </div>
+    <button class="btn-large primary">Learn how it works</button>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INFLUENCER MARKETPLACE -->
+  <div class="sf-section">
+    <div class="sf-section-header">
+      <h2>Influencer marketplace</h2>
+      <a href="#">Browse all →</a>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap">
+      <span class="sf-filter-pill active">All niches</span>
+      <span class="sf-filter-pill">Fashion</span>
+      <span class="sf-filter-pill">Tech</span>
+      <span class="sf-filter-pill">Fitness</span>
+      <span class="sf-filter-pill">Food</span>
+      <span class="sf-filter-pill">Travel</span>
+      <span class="sf-filter-pill">Armenia 🇦🇲</span>
+    </div>
+    <div class="sf-influencers">
+      <div class="sf-inf">
+        <div class="sf-inf-avatar">🌟</div>
+        <div class="sf-inf-name">Ani Hakobyan <i class="ti ti-circle-check sf-verified"></i></div>
+        <div class="sf-inf-niche">Fashion & lifestyle · Yerevan</div>
+        <div class="sf-inf-stats">
+          <div class="sf-stat"><div class="sf-stat-val">124K</div><div class="sf-stat-lbl">Followers</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">6.2%</div><div class="sf-stat-lbl">Engagement</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">38K</div><div class="sf-stat-lbl">Avg views</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">92</div><div class="sf-stat-lbl">AI score</div></div>
+        </div>
+        <div class="sf-inf-plats">
+          <span class="sf-plat-badge">Instagram</span>
+          <span class="sf-plat-badge">TikTok</span>
+        </div>
+        <div class="sf-inf-price">From <strong>$150</strong> / post</div>
+        <button class="sf-inf-contact">Contact</button>
+      </div>
+      <div class="sf-inf">
+        <div class="sf-inf-avatar" style="background:var(--bg-success)">⚡</div>
+        <div class="sf-inf-name">Tigran Vardanyan</div>
+        <div class="sf-inf-niche">Tech reviews · Gyumri</div>
+        <div class="sf-inf-stats">
+          <div class="sf-stat"><div class="sf-stat-val">89K</div><div class="sf-stat-lbl">Followers</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">8.7%</div><div class="sf-stat-lbl">Engagement</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">52K</div><div class="sf-stat-lbl">Avg views</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">88</div><div class="sf-stat-lbl">AI score</div></div>
+        </div>
+        <div class="sf-inf-plats">
+          <span class="sf-plat-badge">YouTube</span>
+          <span class="sf-plat-badge">TikTok</span>
+        </div>
+        <div class="sf-inf-price">From <strong>$200</strong> / video</div>
+        <button class="sf-inf-contact">Contact</button>
+      </div>
+      <div class="sf-inf">
+        <div class="sf-inf-avatar" style="background:var(--bg-warning)">🌸</div>
+        <div class="sf-inf-name">Mariam Petrosyan <i class="ti ti-circle-check sf-verified"></i></div>
+        <div class="sf-inf-niche">Beauty & skincare · Yerevan</div>
+        <div class="sf-inf-stats">
+          <div class="sf-stat"><div class="sf-stat-val">310K</div><div class="sf-stat-lbl">Followers</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">5.1%</div><div class="sf-stat-lbl">Engagement</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">71K</div><div class="sf-stat-lbl">Avg views</div></div>
+          <div class="sf-stat"><div class="sf-stat-val">95</div><div class="sf-stat-lbl">AI score</div></div>
+        </div>
+        <div class="sf-inf-plats">
+          <span class="sf-plat-badge">Instagram</span>
+          <span class="sf-plat-badge">Pinterest</span>
+        </div>
+        <div class="sf-inf-price">From <strong>$380</strong> / post</div>
+        <button class="sf-inf-contact">Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHY SOCIALFIND -->
+  <div class="sf-section">
+    <div class="sf-section-header"><h2>Why SocialFind</h2></div>
+    <div class="sf-why">
+      <div class="sf-why-item">
+        <div class="sf-why-icon"><i class="ti ti-search"></i></div>
+        <div class="sf-why-title">Semantic AI search</div>
+        <div class="sf-why-desc">Search by intent, not just keywords. "Birthday gift under $50" finds what you mean.</div>
+      </div>
+      <div class="sf-why-item">
+        <div class="sf-why-icon"><i class="ti ti-brain"></i></div>
+        <div class="sf-why-title">Auto-detect products</div>
+        <div class="sf-why-desc">AI reads every post — images, videos, captions. Products appear in search without any manual work.</div>
+      </div>
+      <div class="sf-why-item">
+        <div class="sf-why-icon"><i class="ti ti-bookmark"></i></div>
+        <div class="sf-why-title">Never lose a product</div>
+        <div class="sf-why-desc">Save any social media post. We categorize it automatically and keep it forever in your collection.</div>
+      </div>
+      <div class="sf-why-item">
+        <div class="sf-why-icon"><i class="ti ti-photo-search"></i></div>
+        <div class="sf-why-title">Reverse image search</div>
+        <div class="sf-why-desc">Upload a photo of anything and find visually similar products from all connected platforms.</div>
+      </div>
+      <div class="sf-why-item">
+        <div class="sf-why-icon"><i class="ti ti-users"></i></div>
+        <div class="sf-why-title">Campaign AI matching</div>
+        <div class="sf-why-desc">Set your budget and goals. AI ranks the best-fit influencers with a compatibility score.</div>
+      </div>
+      <div class="sf-why-item">
+        <div class="sf-why-icon"><i class="ti ti-shield-check"></i></div>
+        <div class="sf-why-title">Verified sellers</div>
+        <div class="sf-why-desc">Fraud detection, fake follower analysis, and a verification badge program protect every purchase.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="sf-section" style="padding-top:0">
+    <div class="sf-section-header"><h2>What people say</h2></div>
+    <div class="sf-testimonials">
+      <div class="sf-testi">
+        <div class="sf-testi-text">"I kept losing track of products I saw on Instagram. SocialFind solved this completely — I save, it sorts. It also auto-detected all 200+ products from my shop within an hour."</div>
+        <div class="sf-testi-author">
+          <div class="sf-testi-avatar">AN</div>
+          <div><div class="sf-testi-name">Armine N.</div><div class="sf-testi-role">Fashion boutique owner, Yerevan</div></div>
+        </div>
+      </div>
+      <div class="sf-testi">
+        <div class="sf-testi-text">"The influencer matching is genuinely accurate. It found three creators I'd never have found manually — all within our niche and budget. Saved us weeks of research."</div>
+        <div class="sf-testi-author">
+          <div class="sf-testi-avatar">KG</div>
+          <div><div class="sf-testi-name">Karén G.</div><div class="sf-testi-role">Marketing lead, electronics brand</div></div>
+        </div>
+      </div>
+      <div class="sf-testi">
+        <div class="sf-testi-text">"I connected my TikTok and Instagram on Monday. By Wednesday, 140 of my products were live and searchable. Zero manual listings. This is the future of social commerce."</div>
+        <div class="sf-testi-author">
+          <div class="sf-testi-avatar">SV</div>
+          <div><div class="sf-testi-name">Sona V.</div><div class="sf-testi-role">Independent seller, 50K followers</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FOOTER -->
+  <div class="sf-cta-footer">
+    <h2>Your products deserve to be found.</h2>
+    <p>Connect your social accounts in minutes. No listings, no forms — just AI.</p>
+    <div class="sf-cta-btns">
+      <button class="btn-large primary">Register your business</button>
+      <button class="btn-large secondary">Browse as a shopper</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="sf-footer">
+    <div class="sf-logo">Social<span>Find</span></div>
+    <div class="sf-footer-links">
+      <a href="#">About</a>
+      <a href="#">Blog</a>
+      <a href="#">Pricing</a>
+      <a href="#">API</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+    </div>
+    <div class="sf-footer-copy">© 2026 SocialFind. Made for social commerce.</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.sf-filter-pill').forEach(pill => {
+      pill.addEventListener('click', function() {
+        const group = this.closest('.sf-filters, div');
+        group.querySelectorAll('.sf-filter-pill').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.sf-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.closest('.sf-view-toggle').querySelectorAll('.sf-toggle-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.sf-card-btn.save').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        this.textContent = this.textContent.includes('♡') ? '♥ Saved' : '♡ Save';
+      });
+    });
+  </script>
+</body>
+</html>
