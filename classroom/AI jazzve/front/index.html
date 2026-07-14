@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cezvecraft — Handcrafted Copper Coffee Pots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+  :root{
+    --caramel: #c9a06a;
+    --caramel-light: #e0bc88;
+    --cream: #f0e6d3;
+    --bg: #0d0b08;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{text-decoration:none;color:inherit;}
+  button{font:inherit;cursor:pointer;}
+  .serif{font-family:'Playfair Display', serif;}
+  .eyebrow{
+    font-size:0.75rem;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:var(--caramel);
+  }
+
+  /* ---------- fade-in reveal ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1);
+  }
+  .reveal.left{transform:translateX(-40px);}
+  .reveal.right{transform:translateX(40px);}
+  .reveal.none{transform:none;}
+  .reveal.in{opacity:1;transform:translate(0,0);}
+
+  /* ---------- caramel divider ---------- */
+  .caramel-divider{
+    display:flex;align-items:center;gap:1rem;margin:0.5rem 0;
+  }
+  .caramel-divider .line{height:1px;flex:1;background:linear-gradient(to right, transparent, rgba(201,160,106,0.4));}
+  .caramel-divider .line.rev{background:linear-gradient(to left, transparent, rgba(201,160,106,0.4));}
+  .caramel-divider .diamond{width:8px;height:8px;transform:rotate(45deg);border:1px solid var(--caramel);}
+
+  .stars{display:flex;gap:2px;}
+  .stars svg{fill:var(--caramel);color:var(--caramel);}
+
+  /* ================= NAV ================= */
+  nav.site-nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    transition:all 0.5s;
+    background:transparent;
+  }
+  nav.site-nav.scrolled{
+    background:rgba(13,11,8,0.92);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(201,160,106,0.12);
+  }
+  .nav-inner{
+    max-width:1280px;margin:0 auto;padding:0 2.5rem;
+    display:flex;align-items:center;justify-content:space-between;height:80px;
+  }
+  .brand{display:flex;align-items:center;gap:0.75rem;}
+  .brand-icon{
+    width:36px;height:36px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg, var(--caramel), #6b4a28);
+  }
+  .brand-name{font-size:1.125rem;letter-spacing:0.02em;color:var(--cream);}
+  .brand-name span{color:var(--caramel);}
+  .nav-links{display:flex;align-items:center;gap:2rem;}
+  .nav-links a{
+    font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;
+    color:rgba(240,230,211,0.6); transition:color 0.3s;
+  }
+  .nav-links a:hover{color:var(--caramel);}
+  .btn-primary{
+    padding:0.65rem 1.6rem;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
+    border-radius:999px;border:none;
+    background:linear-gradient(135deg, var(--caramel) 0%, #9a7040 100%);
+    color:#0d0b08;box-shadow:0 0 20px rgba(201,160,106,0.3);
+    transition:all 0.3s;
+  }
+  .btn-primary:hover{transform:scale(1.05);box-shadow:0 8px 32px rgba(201,160,106,0.35);}
+  .btn-outline{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    padding:0.9rem 2rem;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;
+    border-radius:999px;border:1px solid rgba(240,230,211,0.2);
+    color:rgba(240,230,211,0.8);background:transparent;transition:all 0.3s;
+  }
+  .btn-outline:hover{border-color:var(--caramel);color:var(--caramel);}
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);}
+  .mobile-menu{display:none;flex-direction:column;gap:1rem;padding:0 1.5rem 1.5rem;background:rgba(13,11,8,0.98);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 0;
+    color:rgba(240,230,211,0.7);border-bottom:1px solid rgba(201,160,106,0.1);
+  }
+
+  @media (max-width:900px){
+    .nav-links, .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    position:relative;min-height:100vh;display:grid;grid-template-columns:1fr;
+    overflow:hidden;background:#0d0b08;
+  }
+  @media (min-width:1024px){ .hero{grid-template-columns:1fr 1fr;} }
+
+  .hero-left{
+    position:relative;z-index:10;display:flex;flex-direction:column;justify-content:center;
+    padding:8rem 2rem 5rem; 
+  }
+  @media (min-width:1024px){ .hero-left{padding:5rem 4rem;} }
+  @media (min-width:1280px){ .hero-left{padding:5rem 6rem;} }
+
+  .hero-kicker{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem;}
+  .hero-kicker .line{height:1px;width:40px;background:var(--caramel);}
+
+  .hero h1{
+    font-size:3rem;line-height:1.1;margin:0 0 1.5rem;color:var(--cream);font-weight:500;
+  }
+  @media (min-width:1280px){ .hero h1{font-size:3.75rem;} }
+  @media (min-width:1536px){ .hero h1{font-size:4.5rem;} }
+  .hero h1 em{color:var(--caramel);font-style:italic;}
+
+  .hero p.lead{
+    font-size:1rem;line-height:1.7;max-width:28rem;margin:0 0 2.5rem;color:rgba(240,230,211,0.65);
+  }
+
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3.5rem;}
+  .play-circle{
+    width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    background:rgba(201,160,106,0.15);border:1px solid rgba(201,160,106,0.3);color:var(--caramel);
+  }
+
+  .hero-feats{display:flex;flex-wrap:wrap;gap:1.5rem;}
+  .hero-feat{display:flex;align-items:center;gap:0.65rem;}
+  .hero-feat .ico{
+    width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    background:rgba(201,160,106,0.12);border:1px solid rgba(201,160,106,0.25);color:var(--caramel);
+  }
+  .hero-feat span{font-size:0.75rem;letter-spacing:0.02em;color:rgba(240,230,211,0.7);}
+
+  .hero-right{position:relative;display:none;}
+  @media (min-width:1024px){ .hero-right{display:block;} }
+  .hero-right::before{
+    content:"";position:absolute;inset:0;z-index:2;
+    background:linear-gradient(to right, #0d0b08 0%, rgba(13,11,8,0.3) 30%, transparent 60%);
+  }
+  .hero-right::after{
+    content:"";position:absolute;inset:0;z-index:2;
+    background:linear-gradient(to top, #0d0b08 0%, transparent 30%);
+  }
+  .hero-right img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.85) saturate(1.1);}
+  .hero-glow{position:absolute;inset:0;z-index:3;background:radial-gradient(ellipse at 60% 40%, rgba(201,160,106,0.12) 0%, transparent 65%);}
+
+  .hero-mobile-img{position:relative;height:18rem;overflow:hidden;}
+  @media (min-width:1024px){ .hero-mobile-img{display:none;} }
+  .hero-mobile-img img{width:100%;height:100%;object-fit:cover;object-position:center;}
+  .hero-mobile-img::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(to top, #0d0b08 0%, transparent 60%);
+  }
+  .hero-bottom-fade{position:absolute;bottom:0;left:0;right:0;height:8rem;z-index:10;background:linear-gradient(to top, #0d0b08, transparent);}
+
+  /* ================= SECTION generic ================= */
+  section{padding:7rem 0;}
+  @media (min-width:1024px){ section{padding:9rem 0;} }
+  .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
+  @media (min-width:1024px){ .container{padding:0 2.5rem;} }
+
+  h2.section-title{
+    font-size:2.5rem;line-height:1.2;color:var(--cream);font-weight:500;margin:0 0 1rem;
+  }
+  @media (min-width:1024px){ h2.section-title{font-size:3rem;} }
+  h2.section-title em{font-style:italic;color:var(--caramel);}
+
+  /* ---------------- ABOUT ---------------- */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:4rem;align-items:center;}
+  @media (min-width:1024px){ .about-grid{grid-template-columns:1fr 1fr;gap:6rem;} }
+  .about-media{position:relative;}
+  .about-media-glow{
+    position:absolute;inset:-1rem;border-radius:1rem;opacity:0.2;filter:blur(30px);
+    background:radial-gradient(ellipse at center, var(--caramel), transparent 70%);
+  }
+  .about-media-inner{position:relative;overflow:hidden;border-radius:1rem;background:#161210;}
+  .about-media-inner img{width:100%;height:520px;object-fit:cover;filter:brightness(0.9) saturate(1.05);}
+  .about-media-inner::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(135deg, rgba(13,11,8,0.3) 0%, transparent 60%, rgba(201,160,106,0.08) 100%);
+  }
+  .about-badge{
+    position:absolute;bottom:-1.5rem;right:-1.5rem;padding:1rem 1.25rem;border-radius:0.75rem;
+    background:rgba(22,18,16,0.9);backdrop-filter:blur(16px);border:1px solid rgba(201,160,106,0.25);
+    box-shadow:0 16px 40px rgba(0,0,0,0.4);
+  }
+  .about-badge .num{font-size:1.875rem;font-weight:700;color:var(--caramel);font-family:'Playfair Display', serif;}
+  .about-badge .label{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(240,230,211,0.6);margin-top:0.15rem;}
+
+  .about-text p.body{margin:1.5rem 0 2rem;line-height:1.7;color:rgba(240,230,211,0.65);}
+  .feat-list{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem;}
+  .feat-item{display:flex;align-items:center;gap:0.75rem;}
+  .feat-item .check{
+    width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    background:rgba(201,160,106,0.15);border:1px solid rgba(201,160,106,0.4);color:var(--caramel);
+  }
+  .feat-item span{font-size:0.875rem;color:rgba(240,230,211,0.75);}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;border-radius:999px;
+    font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
+    border:1px solid rgba(201,160,106,0.45);color:var(--caramel);background:transparent;transition:all 0.3s;
+  }
+  .btn-ghost:hover{background:var(--caramel);color:#0d0b08;}
+
+  /* ---------------- PRODUCT SIZES ---------------- */
+  .sizes-section{background:linear-gradient(180deg, #0d0b08 0%, #110e0a 50%, #0d0b08 100%);}
+  .sizes-head{text-align:center;margin-bottom:4rem;}
+  .sizes-head p.desc{max-width:32rem;margin:1rem auto 0;color:rgba(240,230,211,0.55);}
+  .sizes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
+  @media (min-width:1024px){ .sizes-grid{grid-template-columns:repeat(5,1fr);gap:1.25rem;} }
+  .size-card{
+    position:relative;border-radius:1rem;overflow:hidden;cursor:pointer;transition:all 0.5s;
+    background:#161210;border:1px solid rgba(201,160,106,0.1);box-shadow:0 4px 24px rgba(0,0,0,0.4);
+  }
+  .size-card:hover{transform:translateY(-8px);border-color:rgba(201,160,106,0.45);box-shadow:0 16px 48px rgba(201,160,106,0.2);}
+  .size-img-wrap{position:relative;overflow:hidden;background:#100e0b;height:220px;}
+  .size-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s;filter:brightness(0.85) saturate(1.1);}
+  .size-card:hover .size-img-wrap img{transform:scale(1.1);}
+  .size-img-wrap::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(to top, #161210 0%, transparent 50%);
+  }
+  .size-tag{
+    position:absolute;top:0.75rem;right:0.75rem;padding:0.25rem 0.65rem;border-radius:999px;
+    font-size:0.7rem;font-weight:700;letter-spacing:0.05em;background:rgba(201,160,106,0.9);color:#0d0b08;z-index:2;
+  }
+  .size-body{padding:1.25rem;}
+  .size-body h3{font-size:1.25rem;margin:0 0 0.25rem;color:var(--cream);font-family:'Playfair Display', serif;font-weight:500;}
+  .size-body .cups{font-size:0.75rem;letter-spacing:0.05em;color:rgba(240,230,211,0.5);margin:0 0 1rem;}
+  .size-shop-btn{
+    width:100%;padding:0.65rem;border-radius:0.75rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
+    border:1px solid rgba(201,160,106,0.3);color:rgba(201,160,106,0.85);background:transparent;transition:all 0.3s;
+  }
+  .size-card:hover .size-shop-btn{background:var(--caramel);color:#0d0b08;}
+
+  /* ---------------- BREWING STEPS ---------------- */
+  .steps-head{text-align:center;margin-bottom:4rem;}
+  .steps-grid{display:grid;grid-template-columns:1fr;gap:2rem;position:relative;}
+  @media (min-width:1024px){ .steps-grid{grid-template-columns:repeat(3,1fr);gap:1.5rem;} }
+  .steps-line{
+    display:none;position:absolute;top:220px;left:33%;right:33%;height:1px;
+    background:linear-gradient(to right, var(--caramel), rgba(201,160,106,0.3));z-index:0;
+  }
+  @media (min-width:1024px){ .steps-line{display:block;} }
+  .step-card{position:relative;display:flex;flex-direction:column;height:100%;}
+  .step-media{position:relative;border-radius:1rem;overflow:hidden;margin-bottom:1.75rem;background:#161210;height:260px;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+  .step-media.tall{height:340px;box-shadow:0 24px 64px rgba(201,160,106,0.25), 0 0 0 1px rgba(201,160,106,0.2);}
+  .step-media img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8) saturate(1.15);}
+  .step-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(13,11,8,0.7) 0%, transparent 50%);}
+  .step-num{
+    position:absolute;top:1rem;left:1rem;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-size:0.875rem;font-weight:700;background:rgba(13,11,8,0.7);backdrop-filter:blur(8px);
+    border:1px solid rgba(201,160,106,0.5);color:var(--caramel);z-index:2;
+  }
+  .step-card h3{font-size:1.5rem;margin:0 0 0.75rem;color:var(--cream);font-family:'Playfair Display', serif;font-weight:500;}
+  .step-card p{font-size:0.875rem;line-height:1.7;color:rgba(240,230,211,0.6);margin:0;}
+
+  /* ---------------- WHY CHOOSE ---------------- */
+  .why-section{background:linear-gradient(180deg, #0d0b08 0%, #13100c 100%);}
+  .why-head{text-align:center;margin-bottom:4rem;}
+  .why-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;}
+  @media (min-width:640px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (min-width:1024px){ .why-grid{grid-template-columns:repeat(4,1fr);} }
+  .why-card{
+    padding:1.75rem;border-radius:1rem;height:100%;transition:all 0.5s;
+    background:rgba(22,18,16,0.7);backdrop-filter:blur(16px);border:1px solid rgba(201,160,106,0.12);
+    box-shadow:0 4px 24px rgba(0,0,0,0.3);
+  }
+  .why-card:hover{transform:translateY(-4px);border-color:rgba(201,160,106,0.35);box-shadow:0 16px 40px rgba(201,160,106,0.15);}
+  .why-icon{
+    width:48px;height:48px;border-radius:0.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;
+    background:rgba(201,160,106,0.1);border:1px solid rgba(201,160,106,0.25);color:var(--caramel);
+  }
+  .why-card h3{font-size:1.125rem;margin:0 0 0.75rem;color:var(--cream);font-family:'Playfair Display', serif;font-weight:500;}
+  .why-card p{font-size:0.875rem;line-height:1.7;color:rgba(240,230,211,0.55);margin:0;}
+
+  /* ---------------- REVIEWS ---------------- */
+  .reviews-head{text-align:center;margin-bottom:4rem;}
+  .reviews-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+  @media (min-width:768px){ .reviews-grid{grid-template-columns:repeat(3,1fr);} }
+  .review-card{
+    padding:2rem;border-radius:1rem;height:100%;display:flex;flex-direction:column;
+    background:rgba(22,18,16,0.6);backdrop-filter:blur(24px);border:1px solid rgba(201,160,106,0.14);
+    box-shadow:0 8px 40px rgba(0,0,0,0.35);
+  }
+  .review-card .stars{margin-bottom:1.25rem;}
+  .review-card p.quote{
+    font-size:0.875rem;line-height:1.7;font-style:italic;color:rgba(240,230,211,0.72);flex:1;margin:0 0 2rem;
+  }
+  .review-person{display:flex;align-items:center;gap:1rem;}
+  .review-avatar{
+    width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;
+    border:2px solid rgba(201,160,106,0.35);background:#251f18;
+  }
+  .review-avatar img{width:100%;height:100%;object-fit:cover;}
+  .review-name{font-size:0.875rem;font-weight:700;color:var(--cream);}
+  .review-role{font-size:0.75rem;color:rgba(240,230,211,0.45);margin-top:0.15rem;}
+
+  /* ---------------- RITUAL ---------------- */
+  .ritual-section{background:#100e0a;overflow:hidden;}
+  .ritual-grid{display:grid;grid-template-columns:1fr;gap:4rem;align-items:center;}
+  @media (min-width:1024px){ .ritual-grid{grid-template-columns:1fr 1fr;} }
+  .ritual-media{position:relative;border-radius:1rem;overflow:hidden;background:#161210;height:520px;}
+  .ritual-media img{width:100%;height:100%;object-fit:cover;filter:brightness(0.8) saturate(1.1);}
+  .ritual-media::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(13,11,8,0.4) 0%, transparent 70%, rgba(201,160,106,0.06) 100%);}
+  .ritual-text p{line-height:1.7;margin:0 0 1.5rem;}
+  .ritual-text p.p1{color:rgba(240,230,211,0.65);margin-top:1.5rem;}
+  .ritual-text p.p2{color:rgba(240,230,211,0.55);margin-bottom:2.5rem;}
+  .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+  .stat-box{padding:1rem;border-radius:0.75rem;text-align:center;background:rgba(201,160,106,0.07);border:1px solid rgba(201,160,106,0.18);}
+  .stat-box .num{font-size:1.5rem;font-weight:700;color:var(--caramel);font-family:'Playfair Display', serif;margin-bottom:0.25rem;}
+  .stat-box .label{font-size:0.7rem;letter-spacing:0.05em;color:rgba(240,230,211,0.5);}
+
+  /* ---------------- FINAL CTA ---------------- */
+  .cta-section{position:relative;padding:10rem 0;overflow:hidden;text-align:center;}
+  .cta-bg{position:absolute;inset:0;}
+  .cta-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.35) saturate(0.9);}
+  .cta-bg::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center, rgba(201,160,106,0.15) 0%, rgba(13,11,8,0.6) 60%, #0d0b08 100%);
+  }
+  .cta-inner{position:relative;z-index:10;max-width:48rem;margin:0 auto;padding:0 1.5rem;}
+  .cta-divider{display:flex;justify-content:center;align-items:center;margin-bottom:1.5rem;}
+  .cta-divider .l{height:1px;width:64px;}
+  .cta-divider .l1{background:linear-gradient(to right, transparent, var(--caramel));}
+  .cta-divider .l2{background:linear-gradient(to left, transparent, var(--caramel));}
+  .cta-divider .d{width:8px;height:8px;background:var(--caramel);transform:rotate(45deg);margin:0 0.75rem;margin-top:-3px;}
+  .cta-inner h2{font-size:3rem;line-height:1.2;margin:0 0 1.5rem;color:var(--cream);font-weight:500;}
+  @media (min-width:1024px){ .cta-inner h2{font-size:3.75rem;} }
+  @media (min-width:1280px){ .cta-inner h2{font-size:4.5rem;} }
+  .cta-inner h2 em{font-style:italic;color:var(--caramel);}
+  .cta-inner p.lead{font-size:1.125rem;margin:0 0 3rem;color:rgba(240,230,211,0.6);}
+  .cta-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+  .btn-primary-lg{
+    padding:1rem 2.5rem;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
+    border-radius:999px;border:none;
+    background:linear-gradient(135deg, var(--caramel) 0%, #9a7040 100%);color:#0d0b08;
+    box-shadow:0 8px 40px rgba(201,160,106,0.4);transition:all 0.3s;
+  }
+  .btn-primary-lg:hover{transform:scale(1.05);}
+  .btn-outline-lg{
+    padding:1rem 2.5rem;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
+    border-radius:999px;border:1px solid rgba(240,230,211,0.25);color:rgba(240,230,211,0.8);background:transparent;
+    transition:all 0.3s;
+  }
+  .btn-outline-lg:hover{border-color:var(--caramel);color:var(--caramel);}
+
+  /* ---------------- FOOTER ---------------- */
+  footer{padding:5rem 0 2.5rem;background:#080604;border-top:1px solid rgba(201,160,106,0.12);}
+  .footer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.5rem;margin-bottom:4rem;}
+  @media (min-width:1024px){ .footer-grid{grid-template-columns:repeat(5,1fr);} }
+  .footer-brand{grid-column:span 2;}
+  .footer-brand p{font-size:0.875rem;line-height:1.7;max-width:20rem;margin:0 0 1.5rem;color:rgba(240,230,211,0.45);}
+  .newsletter{display:flex;overflow:hidden;border-radius:999px;border:1px solid rgba(201,160,106,0.25);max-width:24rem;}
+  .newsletter input{
+    flex:1;background:transparent;border:none;padding:0.75rem 1.25rem;font-size:0.875rem;color:var(--cream);outline:none;font-family:inherit;
+  }
+  .newsletter button{
+    padding:0 1.25rem;display:flex;align-items:center;justify-content:center;border:none;
+    background:rgba(201,160,106,0.85);color:#0d0b08;
+  }
+  .footer-col h4{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--caramel);margin:0 0 1.25rem;}
+  .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.75rem;}
+  .footer-col a{font-size:0.875rem;color:rgba(240,230,211,0.45);transition:color 0.2s;}
+  .footer-col a:hover{color:var(--caramel);}
+  .footer-bottom{
+    padding-top:2rem;display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:1rem;
+    border-top:1px solid rgba(201,160,106,0.1);
+  }
+  @media (min-width:640px){ .footer-bottom{flex-direction:row;} }
+  .footer-bottom p{font-size:0.75rem;color:rgba(240,230,211,0.3);margin:0;}
+  .socials{display:flex;align-items:center;gap:1rem;}
+  .socials a{
+    width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(240,230,211,0.15);color:rgba(240,230,211,0.4);transition:all 0.3s;
+  }
+  .socials a:hover{border-color:var(--caramel);color:var(--caramel);}
+
+  /* ---------------- API states ---------------- */
+  .api-loading{
+    grid-column:1 / -1;text-align:center;padding:3rem 1rem;
+    color:rgba(240,230,211,0.45);font-size:0.875rem;letter-spacing:0.05em;
+  }
+  .api-error{
+    grid-column:1 / -1;text-align:center;padding:2rem 1.5rem;border-radius:0.75rem;
+    background:rgba(180,60,60,0.12);border:1px solid rgba(220,80,80,0.25);
+    color:rgba(240,200,200,0.85);font-size:0.875rem;
+  }
+  .newsletter-msg{
+    margin-top:0.75rem;font-size:0.75rem;min-height:1rem;
+  }
+  .newsletter-msg.ok{color:var(--caramel);}
+  .newsletter-msg.err{color:#e08080;}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-icon"><i data-lucide="coffee" size="17" color="#0d0b08" stroke-width="2.2"></i></div>
+      <span class="brand-name serif">Cezve<span>craft</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#">Collection</a>
+      <a href="#">Craftsmanship</a>
+      <a href="#">Brewing Guide</a>
+      <a href="#">About</a>
+    </div>
+    <div class="nav-cta">
+      <button class="btn-primary">Shop Now</button>
+    </div>
+    <button class="nav-toggle" id="navToggle"><i data-lucide="menu" size="24"></i></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Collection</a>
+    <a href="#">Craftsmanship</a>
+    <a href="#">Brewing Guide</a>
+    <a href="#">About</a>
+    <button class="btn-primary" style="margin-top:0.5rem;">Shop Now</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="reveal none hero-kicker" style="transition-delay:0.1s">
+      <div class="line"></div>
+      <span class="eyebrow">Rich. Authentic. Handcrafted.</span>
+    </div>
+
+    <h1 class="reveal serif" style="transition-delay:0.2s">
+      Experience<br>
+      <em>Coffee</em><br>
+      Like Never<br>
+      Before
+    </h1>
+
+    <p class="reveal lead" style="transition-delay:0.35s">
+      Brew rich, aromatic coffee using a handcrafted copper coffee pot
+      designed for exceptional heat distribution, authentic flavor, and
+      timeless craftsmanship.
+    </p>
+
+    <div class="reveal hero-ctas" style="transition-delay:0.45s">
+      <button class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;">
+        Shop Collection <i data-lucide="arrow-right" size="16"></i>
+      </button>
+      <button class="btn-outline">
+        <span class="play-circle"><i data-lucide="play" size="10" fill="currentColor"></i></span>
+        Watch Brewing
+      </button>
+    </div>
+
+    <div class="reveal hero-feats" style="transition-delay:0.55s">
+      <div class="hero-feat"><div class="ico"><i data-lucide="hammer" size="18"></i></div><span>Handmade Copper</span></div>
+      <div class="hero-feat"><div class="ico"><i data-lucide="flame" size="18"></i></div><span>Even Heat Distribution</span></div>
+      <div class="hero-feat"><div class="ico"><i data-lucide="award" size="18"></i></div><span>Built to Last</span></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1588332796091-abc5fb03c5d6?w=900&h=1100&fit=crop&auto=format" alt="Handcrafted copper coffee pot on wooden surface">
+    <div class="hero-glow"></div>
+  </div>
+
+  <div class="hero-mobile-img">
+    <img src="https://images.unsplash.com/photo-1588332796091-abc5fb03c5d6?w=900&h=1100&fit=crop&auto=format" alt="Handcrafted copper coffee pot">
+  </div>
+
+  <div class="hero-bottom-fade"></div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section>
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal left about-media">
+        <div class="about-media-glow"></div>
+        <div class="about-media-inner">
+          <img src="https://images.unsplash.com/photo-1579481809735-fee10aaddab1?w=800&h=900&fit=crop&auto=format" alt="Copper coffee pot with cups and roasted beans">
+        </div>
+        <div class="about-badge">
+          <div class="num serif">100%</div>
+          <div class="label">Pure Copper</div>
+        </div>
+      </div>
+
+      <div class="reveal right about-text" style="transition-delay:0.1s">
+        <div class="hero-kicker">
+          <div class="line" style="width:32px;"></div>
+          <span class="eyebrow">Our Story</span>
+        </div>
+        <h2 class="section-title serif">More Than a<br><em>Coffee Pot</em></h2>
+        <div class="caramel-divider"><div class="line"></div><div class="diamond"></div><div class="line rev"></div></div>
+        <p class="body">
+          Every Cezve craft copper pot is shaped by hand using centuries-old
+          techniques passed down through generations. Our artisans select
+          only the finest 99.9% pure copper sheets, hand-hammered to achieve
+          the precise wall thickness that ensures even, controlled heat
+          distribution — the secret to a perfect brew.
+        </p>
+        <div class="feat-list">
+          <div class="feat-item"><div class="check"><i data-lucide="chevron-right" size="11"></i></div><span>Handmade Copper Construction</span></div>
+          <div class="feat-item"><div class="check"><i data-lucide="chevron-right" size="11"></i></div><span>Food-Safe Interior Coating</span></div>
+          <div class="feat-item"><div class="check"><i data-lucide="chevron-right" size="11"></i></div><span>Compatible with Multiple Heat Sources</span></div>
+          <div class="feat-item"><div class="check"><i data-lucide="chevron-right" size="11"></i></div><span>Crafted for Rich, Full-Bodied Flavor</span></div>
+        </div>
+        <button class="btn-ghost">Learn More <i data-lucide="arrow-right" size="15"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCT SIZES ================= -->
+<section class="sizes-section">
+  <div class="container">
+    <div class="reveal sizes-head">
+      <span class="eyebrow">The Collection</span>
+      <h2 class="section-title serif" style="margin-top:0.5rem;">Choose the Perfect Size</h2>
+      <p class="desc">Available in five capacities for every coffee ritual — from a solitary morning cup to a family gathering.</p>
+    </div>
+
+    <div class="sizes-grid" id="sizesGrid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= BREWING STEPS ================= -->
+<section>
+  <div class="container">
+    <div class="reveal steps-head">
+      <span class="eyebrow" style="display:block;margin-bottom:1rem;">The Process</span>
+      <h2 class="section-title serif">Watch Every Brew<br><em>Come to Life</em></h2>
+    </div>
+
+    <div class="steps-grid">
+      <div class="steps-line"></div>
+
+      <div class="reveal step-card">
+        <div class="step-media">
+          <img src="https://images.unsplash.com/photo-1734453109341-cb256b811571?w=700&h=500&fit=crop&auto=format" alt="Prepare">
+          <div class="step-num">01</div>
+        </div>
+        <h3 class="serif">Prepare</h3>
+        <p>Select freshly ground coffee, measure filtered water, and warm your copper pot over low heat. Let the ritual begin.</p>
+      </div>
+
+      <div class="reveal step-card" style="transition-delay:0.15s">
+        <div class="step-media tall">
+          <img src="https://images.unsplash.com/photo-1680163660834-fa4f67748e21?w=900&h=700&fit=crop&auto=format" alt="Perfect Brew">
+          <div class="step-num">02</div>
+        </div>
+        <h3 class="serif">Perfect Brew</h3>
+        <p>Gently bring to a near-boil. Watch the rich foam rise — the signature of copper's even heat and expert craft.</p>
+      </div>
+
+      <div class="reveal step-card" style="transition-delay:0.3s">
+        <div class="step-media">
+          <img src="https://images.unsplash.com/photo-1545665206-b3e63670666e?w=700&h=500&fit=crop&auto=format" alt="Serve & Enjoy">
+          <div class="step-num">03</div>
+        </div>
+        <h3 class="serif">Serve &amp; Enjoy</h3>
+        <p>Pour slowly into a small ceramic cup. The crema settles, steam curls upward — a moment of pure pleasure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="why-section">
+  <div class="container">
+    <div class="reveal why-head">
+      <span class="eyebrow" style="display:block;margin-bottom:1rem;">Why Cezve Craft</span>
+      <h2 class="section-title serif">Why Choose Our<br><em>Coffee Pot</em></h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="reveal why-card">
+        <div class="why-icon"><i data-lucide="droplets" size="24"></i></div>
+        <h3 class="serif">Pure Copper Body</h3>
+        <p>99.9% pure copper construction for superior thermal conductivity and natural antimicrobial properties.</p>
+      </div>
+      <div class="reveal why-card" style="transition-delay:0.1s">
+        <div class="why-icon"><i data-lucide="hammer" size="24"></i></div>
+        <h3 class="serif">Handmade Craftsmanship</h3>
+        <p>Each pot is individually shaped by master artisans using hand-hammering techniques refined over generations.</p>
+      </div>
+      <div class="reveal why-card" style="transition-delay:0.2s">
+        <div class="why-icon"><i data-lucide="hand" size="24"></i></div>
+        <h3 class="serif">Ergonomic Wooden Handle</h3>
+        <p>Heat-resistant walnut handle fits naturally in the hand, balancing the pot for confident, precise pouring.</p>
+      </div>
+      <div class="reveal why-card" style="transition-delay:0.3s">
+        <div class="why-icon"><i data-lucide="thermometer" size="24"></i></div>
+        <h3 class="serif">Exceptional Heat Control</h3>
+        <p>The unique taper and wall geometry create natural turbulence that evenly extracts flavor from every grain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section>
+  <div class="container">
+    <div class="reveal reviews-head">
+      <span class="eyebrow" style="display:block;margin-bottom:1rem;">Testimonials</span>
+      <h2 class="section-title serif">Loved by Coffee<br><em>Devotees Worldwide</em></h2>
+    </div>
+
+    <div class="reviews-grid" id="reviewsGrid"></div>
+  </div>
+</section>
+
+<!-- ================= RITUAL ================= -->
+<section class="ritual-section">
+  <div class="container">
+    <div class="ritual-grid">
+      <div class="reveal left ritual-media">
+        <img src="https://images.unsplash.com/photo-1700323575876-e17b7507acb0?w=1400&h=700&fit=crop&auto=format" alt="Coffee ritual with copper pot, cups, and roasted beans">
+      </div>
+
+      <div class="reveal right ritual-text" style="transition-delay:0.1s">
+        <div class="hero-kicker">
+          <div class="line" style="width:32px;"></div>
+          <span class="eyebrow">Daily Ritual</span>
+        </div>
+        <h2 class="section-title serif">Transform Your<br>Morning Into a<br><em>Sacred Ritual</em></h2>
+        <div class="caramel-divider"><div class="line"></div><div class="diamond"></div><div class="line rev"></div></div>
+        <p class="p1">
+          There is a moment before the first sip — the copper warming in your
+          hands, steam rising lazily, the entire kitchen filled with the deep,
+          earthy fragrance of ground coffee. This pot does not just brew
+          coffee. It invites you to slow down.
+        </p>
+        <p class="p2">
+          Pair it with a small ceramic cup, a spoonful of dark sugar, and five
+          minutes of silence. That is all a perfect morning requires.
+        </p>
+        <div class="stat-grid">
+          <div class="stat-box"><div class="num serif">50+</div><div class="label">Years of Craft</div></div>
+          <div class="stat-box"><div class="num serif">12K+</div><div class="label">Happy Customers</div></div>
+          <div class="stat-box"><div class="num serif">5★</div><div class="label">Average Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="cta-section">
+  <div class="cta-bg">
+    <img src="https://images.unsplash.com/photo-1579481802836-4c56a02b36d9?w=1600&h=900&fit=crop&auto=format" alt="Five copper coffee pots arranged under cinematic lighting">
+  </div>
+  <div class="cta-inner reveal">
+    <div class="cta-divider">
+      <div class="l l1"></div><div class="d"></div><div class="l l2"></div>
+    </div>
+    <h2 class="serif">Craft Every Cup<br><em>to Perfection</em></h2>
+    <p class="lead">Join thousands of coffee devotees who have made the Cezve craft pot the centerpiece of their daily ritual.</p>
+    <div class="cta-buttons">
+      <button class="btn-primary-lg">Shop Now</button>
+      <button class="btn-outline-lg">Explore Collection</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand" style="margin-bottom:1.25rem;">
+          <div class="brand-icon"><i data-lucide="coffee" size="17" color="#0d0b08" stroke-width="2.2"></i></div>
+          <span class="brand-name serif">Cezve<span>craft</span></span>
+        </div>
+        <p>Handcrafted copper coffee pots made with centuries of artisan tradition. Every brew, a ceremony.</p>
+        <form class="newsletter" id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="Your email address" required>
+          <button type="submit" id="newsletterBtn"><i data-lucide="mail" size="16"></i></button>
+        </form>
+        <p class="newsletter-msg" id="newsletterMsg"></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Collections</a></li>
+          <li><a href="#">Mini Cezve</a></li>
+          <li><a href="#">Family Size</a></li>
+          <li><a href="#">Gift Sets</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">Brewing Guide</a></li>
+          <li><a href="#">About Copper</a></li>
+          <li><a href="#">Care Instructions</a></li>
+          <li><a href="#">Our Story</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Wholesale</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Cezve Craft. All rights reserved. Handmade with love.</p>
+      <div class="socials">
+        <a href="#"><i data-lucide="instagram" size="15"></i></a>
+        <a href="#"><i data-lucide="facebook" size="15"></i></a>
+        <a href="#"><i data-lucide="twitter" size="15"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const API_BASE = 'http://127.0.0.1:8000/api';
+
+  lucide.createIcons();
+
+  async function apiGet(path) {
+    const res = await fetch(`${API_BASE}${path}`);
+    if (!res.ok) throw new Error(`Request failed (${res.status})`);
+    return res.json();
+  }
+
+  async function apiPost(path, body) {
+    const res = await fetch(`${API_BASE}${path}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      const msg = data.email?.[0] || data.detail || `Request failed (${res.status})`;
+      throw new Error(msg);
+    }
+    return data;
+  }
+
+  // ---- nav scroll state ----
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ---- mobile menu ----
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    navToggle.innerHTML = mobileMenu.classList.contains('open')
+      ? '<i data-lucide="x" size="24"></i>'
+      : '<i data-lucide="menu" size="24"></i>';
+    lucide.createIcons();
+  });
+
+  // ---- scroll reveal observer ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '-80px' });
+
+  function observeReveal(root) {
+    (root || document).querySelectorAll('.reveal:not(.in)').forEach(el => observer.observe(el));
+  }
+
+  const starSvg = () => `<svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.9-6.2 3.9 1.6-7L2 9.2l7.1-.6L12 2z"/></svg>`;
+
+  function renderProducts(products) {
+    const sizesGrid = document.getElementById('sizesGrid');
+    sizesGrid.innerHTML = '';
+    products.forEach((s, i) => {
+      const el = document.createElement('div');
+      el.className = 'reveal size-card';
+      el.style.transitionDelay = (i * 0.08) + 's';
+      el.innerHTML = `
+        <div class="size-img-wrap">
+          <img src="${s.image_url}" alt="${s.name} copper coffee pot — ${s.ml}ml">
+          <div class="size-tag">${s.ml}ml</div>
+        </div>
+        <div class="size-body">
+          <h3 class="serif">${s.name}</h3>
+          <p class="cups">${s.cups}</p>
+          <button class="size-shop-btn">Shop — $${s.price}</button>
+        </div>
+      `;
+      sizesGrid.appendChild(el);
+    });
+    observeReveal(sizesGrid);
+  }
+
+  function renderReviews(reviews) {
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    reviewsGrid.innerHTML = '';
+    reviews.forEach((r, i) => {
+      const stars = starSvg().repeat(r.rating || 5);
+      const el = document.createElement('div');
+      el.className = 'reveal review-card';
+      el.style.transitionDelay = (i * 0.12) + 's';
+      el.innerHTML = `
+        <div class="stars">${stars}</div>
+        <p class="quote">"${r.review}"</p>
+        <div class="review-person">
+          <div class="review-avatar"><img src="${r.image_url}" alt="${r.name}"></div>
+          <div>
+            <div class="review-name">${r.name}</div>
+            <div class="review-role">${r.role}</div>
+          </div>
+        </div>
+      `;
+      reviewsGrid.appendChild(el);
+    });
+    observeReveal(reviewsGrid);
+  }
+
+  function showGridError(grid, message) {
+    grid.innerHTML = `<div class="api-error">${message}</div>`;
+  }
+
+  async function loadProducts() {
+    const sizesGrid = document.getElementById('sizesGrid');
+    sizesGrid.innerHTML = '<div class="api-loading">Loading collection…</div>';
+    try {
+      const data = await apiGet('/products/');
+      renderProducts(data.results || data);
+    } catch (err) {
+      showGridError(sizesGrid, `Could not load products. Make sure the backend is running at ${API_BASE.replace('/api', '')}.`);
+      console.error(err);
+    }
+  }
+
+  async function loadReviews() {
+    const reviewsGrid = document.getElementById('reviewsGrid');
+    reviewsGrid.innerHTML = '<div class="api-loading">Loading testimonials…</div>';
+    try {
+      const data = await apiGet('/reviews/');
+      renderReviews(data.results || data);
+    } catch (err) {
+      showGridError(reviewsGrid, `Could not load reviews. Make sure the backend is running at ${API_BASE.replace('/api', '')}.`);
+      console.error(err);
+    }
+  }
+
+  // ---- newsletter ----
+  const newsletterForm = document.getElementById('newsletterForm');
+  const newsletterEmail = document.getElementById('newsletterEmail');
+  const newsletterMsg = document.getElementById('newsletterMsg');
+  const newsletterBtn = document.getElementById('newsletterBtn');
+
+  newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    newsletterMsg.textContent = '';
+    newsletterMsg.className = 'newsletter-msg';
+    newsletterBtn.disabled = true;
+
+    try {
+      await apiPost('/newsletter/', { email: newsletterEmail.value.trim() });
+      newsletterMsg.textContent = 'Thank you — you are subscribed.';
+      newsletterMsg.classList.add('ok');
+      newsletterEmail.value = '';
+    } catch (err) {
+      newsletterMsg.textContent = err.message;
+      newsletterMsg.classList.add('err');
+    } finally {
+      newsletterBtn.disabled = false;
+    }
+  });
+
+  loadProducts();
+  loadReviews();
+  observeReveal();
+</script>
+
+</body>
+</html>
