@@ -46,7 +46,7 @@ ul{ list-style:none; }
 .eyebrow::before{ content:""; width:22px; height:2px; background:var(--gold-deep); display:inline-block; }
 
 /* ---------- Ring logo & pattern ---------- */
-.ring-mark{ display:block; object-fit:contain; }
+.ring-mark{ display:block; object-fit:contain; width: 64px; }
 .ring-pattern-bg{
   position:absolute; inset:0; pointer-events:none; overflow:hidden;
 }
