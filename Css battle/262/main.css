@@ -1,0 +1,28 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.container {
+width: 400px;
+height: 300px;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color:#243D83;
+
+}
+.white {
+    width: 200px;
+    height: 240px;
+    background-color: #FFFFFF;
+    border-radius: 100px;
+}
+
+.white::before {
+    content: "";
+    width: 400px;
+    height: 100px;
+    background-color: #243D83;
+    border-radius: 50%;
+}

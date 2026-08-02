@@ -1,0 +1,14 @@
+.taegeuk {
+  width: 200px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    /* Small blue circle */
+    radial-gradient(circle at 78% 55%, #0b3d91 0 25%, transparent 25%),
+
+    /* Small red circle */
+    radial-gradient(circle at 25% 50%, #c8102e 0 25%, transparent 25%),
+
+    /* Main split */
+    linear-gradient(to bottom, #c8102e 50%, #0b3d91 50%);
+}

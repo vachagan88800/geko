@@ -1,0 +1,6 @@
+{
+  "name": "KartShop",
+  "description": "A premium online store for professional racing karts, safety helmets, racing suits, tires, engines, and official karting accessories.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
