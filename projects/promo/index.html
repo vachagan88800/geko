@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promo Tour — Your Next Adventure Starts Here</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#home" class="brand">
+      <span class="logo-chip"><img src="promo-tour-logo.png" alt="Promo Tour logo"></span>
+      <span>Promo Tour</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#why-us">Why Us</a></li>
+      <li><a href="#deals">Deals</a></li>
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#visa-support">Visa Support</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-primary nav-cta-desktop btn-primary-desktop">Get Free Consultation</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#deals">Deals</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#visa-support">Visa Support</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="btn btn-primary" style="margin-top:14px;justify-content:center;">Get Free Consultation</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home" style="padding:0;">
+  <video class="hero-video" autoplay muted loop playsinline poster="https://picsum.photos/seed/promotour-hero/1800/1100">
+    <source src="wave-crashing.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <p class="eyebrow" style="color:var(--sky);">Custom trips, real humans, zero guesswork</p>
+    <h1>Your Next <em>Adventure</em> Starts Here</h1>
+    <p class="sub">From first idea to final boarding call — Promo Tour designs personalized itineraries, handles the paperwork, and stays on call while you're away.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
+      <a href="#destinations" class="btn btn-ghost">Browse Destinations</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>12,000+</strong><span>Travelers guided</span></div>
+      <div><strong>40+</strong><span>Countries covered</span></div>
+      <div><strong>24/7</strong><span>Support on the road</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="why-us" id="why-us">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Why Promo Tour</p>
+      <h2>Travel planning, minus the stress</h2>
+      <p>We handle the details most agencies skip — so your only decision is which view you want from the window seat.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15 9 11 11 9 15 13 13 15 9"/></svg>
+        </div>
+        <h3>Personalized Itineraries</h3>
+        <p>Every trip is planned around how you actually like to travel — pace, budget, and bucket list included.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="9" r="2.2"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+        </div>
+        <h3>Visa & Documentation Support</h3>
+        <p>Applications, checklists, and appointment tracking — handled by people who know the process.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7.5c0-1.5 1.8-2.5 4-2.5s4 1 4 2.5-1.8 2.2-4 2.5c-2.2.3-4 1-4 2.5s1.8 2.5 4 2.5 4-1 4-2.5"/></svg>
+        </div>
+        <h3>Best Price Guarantee</h3>
+        <p>We track fares across our partner network so you never overpay for the same seat.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon-badge">
+          <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13a8 8 0 0 1 16 0"/><rect x="3" y="13" width="4" height="6" rx="1.2"/><rect x="17" y="13" width="4" height="6" rx="1.2"/></svg>
+        </div>
+        <h3>24/7 Travel Support</h3>
+        <p>Delays, rebookings, and “where do we even go now” questions — answered any hour, any timezone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOT DEALS ================= -->
+<section class="deals" id="deals">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Hot Deals</p>
+      <h2>Fares our team is watching right now</h2>
+      <p>Limited windows, real availability — ask us to lock in a quote before it moves.</p>
+    </div>
+    <div class="deals-grid">
+      <div class="deal-card">
+        <div class="deal-img"><span class="deal-tag">Save 22%</span><img src="https://picsum.photos/seed/maldives-deal/500/400" alt="Maldives overwater villas"></div>
+        <div class="deal-body">
+          <h3>Maldives Escape</h3>
+          <p class="deal-price">From $1,299 <span>/ 6 nights, all-inclusive</span></p>
+          <a href="#contact" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="deal-card">
+        <div class="deal-img"><span class="deal-tag">Best Seller</span><img src="https://picsum.photos/seed/greece-deal/500/400" alt="Greek island hopping"></div>
+        <div class="deal-body">
+          <h3>Greek Island Hopping</h3>
+          <p class="deal-price">From $999 <span>/ 8 nights, 3 islands</span></p>
+          <a href="#contact" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="deal-card">
+        <div class="deal-img"><span class="deal-tag">New</span><img src="https://picsum.photos/seed/bali-deal/500/400" alt="Bali retreat"></div>
+        <div class="deal-body">
+          <h3>Bali Bliss Retreat</h3>
+          <p class="deal-price">From $849 <span>/ 7 nights + spa</span></p>
+          <a href="#contact" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+      <div class="deal-card">
+        <div class="deal-img"><span class="deal-tag">Limited</span><img src="https://picsum.photos/seed/egypt-deal/500/400" alt="Egypt discovery tour"></div>
+        <div class="deal-body">
+          <h3>Egypt Discovery</h3>
+          <p class="deal-price">From $1,099 <span>/ 9 nights, guided</span></p>
+          <a href="#contact" class="btn btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DESTINATIONS ================= -->
+<section class="destinations" id="destinations">
+  <svg class="flight-path" viewBox="0 0 340 200" fill="none">
+    <path id="fp" d="M10 170 C 90 40, 180 220, 260 60 S 320 20, 330 15" stroke="#173753" stroke-width="2" stroke-dasharray="6 8" stroke-linecap="round"/>
+    <circle cx="10" cy="170" r="5" fill="#2892D7"/>
+    <circle cx="180" cy="130" r="5" fill="#2892D7"/>
+    <circle cx="330" cy="15" r="5" fill="#2892D7"/>
+  </svg>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Destinations</p>
+      <h2>Where to next?</h2>
+      <p>A starting list — if it's not here yet, it's probably one email away.</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <img src="https://picsum.photos/seed/europe-dest/500/500" alt="Europe travel destination">
+        <div class="dest-overlay"><h3>Europe</h3><p>Cobblestones, cafés & castles</p></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://picsum.photos/seed/maldives-dest/500/500" alt="Maldives travel destination">
+        <div class="dest-overlay"><h3>Maldives</h3><p>Overwater villas & endless blue</p></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://picsum.photos/seed/bali-dest/500/500" alt="Bali travel destination">
+        <div class="dest-overlay"><h3>Bali</h3><p>Temples, rice terraces & sunset surf</p></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://picsum.photos/seed/thailand-dest/500/500" alt="Thailand travel destination">
+        <div class="dest-overlay"><h3>Thailand</h3><p>Golden temples & island hopping</p></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://picsum.photos/seed/egypt-dest/500/500" alt="Egypt travel destination">
+        <div class="dest-overlay"><h3>Egypt</h3><p>Walk among the pharaohs</p></div>
+      </div>
+      <div class="dest-card">
+        <img src="https://picsum.photos/seed/tunisia-dest/500/500" alt="Tunisia travel destination">
+        <div class="dest-overlay"><h3>Tunisia</h3><p>Sahara dunes & Mediterranean coast</p></div>
+      </div>
+      <div class="dest-card placeholder">
+        <div class="plus">+</div>
+        <span>More destinations added monthly</span>
+      </div>
+      <div class="dest-card placeholder">
+        <div class="plus">?</div>
+        <span>Dreaming of somewhere else? Ask us about custom trips</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISA & DOCUMENTATION ================= -->
+<section class="visa" id="visa-support">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Visa & Documentation</p>
+      <h2>Paperwork made painless</h2>
+      <p class="lead">Visa rules change constantly, and a missing document can cancel a trip that took months to plan. Our team tracks requirements for every destination we sell and walks alongside you from first form to final stamp — so nothing gets left to the last minute.</p>
+      <a href="#contact" class="btn btn-secondary" style="margin-top:26px;">Ask About Your Destination</a>
+    </div>
+    <div class="visa-card">
+      <ul class="visa-list">
+        <li>
+          <div class="visa-check"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong>Tourist Visa Applications</strong><span>Guided form filling and submission for leisure travel.</span></div>
+        </li>
+        <li>
+          <div class="visa-check"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong>Transit Visa Assistance</strong><span>Layover requirements checked before you book the connection.</span></div>
+        </li>
+        <li>
+          <div class="visa-check"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong>Document Checklists & Templates</strong><span>A clear list per destination, no guessing what's missing.</span></div>
+        </li>
+        <li>
+          <div class="visa-check"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong>Appointment Booking & Tracking</strong><span>We schedule embassy slots and track status until approval.</span></div>
+        </li>
+        <li>
+          <div class="visa-check"><svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><strong>Passport Renewal Support</strong><span>Timelines checked against travel dates well in advance.</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Get In Touch</p>
+      <h2>Let's plan your trip</h2>
+      <p>Tell us where you're headed and we'll come back with a tailored quote — usually within one business day.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thanks! Your consultation request has been received — our team will reach out shortly.');">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Jane Traveler" required>
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+1 555 000 1234">
+          </div>
+          <div class="field">
+            <label for="destination">Destination of Interest</label>
+            <select id="destination">
+              <option>Europe</option>
+              <option>Maldives</option>
+              <option>Bali</option>
+              <option>Thailand</option>
+              <option>Egypt</option>
+              <option>Tunisia</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field" style="grid-column:1 / -1;">
+            <label for="dates">Preferred Travel Dates</label>
+            <input type="text" id="dates" placeholder="e.g. Oct 12 – Oct 20, 2026">
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:22px;">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us a bit about the trip you're imagining..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Request Free Consultation</button>
+      </form>
+
+      <div class="contact-side">
+        <div class="info-card">
+          <div class="info-row">
+            <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.65 2.65a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.43-1.43a2 2 0 0 1 2.11-.45c.86.31 1.75.53 2.65.65A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><strong>Call Us</strong><span>+1 (555) 812-4470</span></div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg></div>
+            <div><strong>Email Us</strong><span>hello@promotour.com</span></div>
+          </div>
+          <div class="info-row">
+            <div class="ic"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><strong>Visit Us</strong><span>148 Harbor Avenue, Suite 4B<br>Portside, CA 90210</span></div>
+          </div>
+          <div class="social-row">
+            <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="#fff"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M15 4h-2a4 4 0 0 0-4 4v3H7v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z"/><path d="M8.5 9.5c0 3.5 3 6.5 6.5 6.5"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-chip"><img src="promo-tour-logo.svg" alt="Promo Tour logo"></span>
+        <span>Promo Tour</span>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#deals">Hot Deals</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#visa-support">Visa & Documentation</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>hello@promotour.com</li>
+            <li>+1 (555) 812-4470</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Promo Tour. All rights reserved.</span>
+      <span>Made for travelers, by travelers.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => { menu.style.display = 'none'; });
+  });
+</script>
+</body>
+</html>
