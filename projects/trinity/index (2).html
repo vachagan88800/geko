@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trinity Travel Boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Sans+Armenian:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="brand" id="brand-link" aria-label="Trinity Travel Boutique — home">
+      <img class="ring-mark" src="trinity-travel-logo.png" alt="Trinity Travel Boutique logo">
+      <span>Trinity<span class="sub" id="brand-sub">TRAVEL BOUTIQUE</span></span>
+    </a>
+    <nav class="main-nav" id="main-nav"></nav>
+    <div class="header-actions">
+      <div class="lang-switch" id="lang-switch">
+        <button data-lang="am">ՀԱՅ</button>
+        <button data-lang="ru">РУС</button>
+        <button data-lang="en">ENG</button>
+      </div>
+      <a href="#contact" class="cta-btn ghost" id="header-cta">Contact</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <div class="mobile-drawer-top">
+    <span class="brand">Trinity</span>
+    <button class="mobile-close" id="mobile-close" aria-label="Close menu">&times;</button>
+  </div>
+  <div id="mobile-nav-links"></div>
+</div>
+
+<!-- ============ HOME VIEW ============ -->
+<div class="home-view" id="home-view">
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-video-wrap" aria-hidden="true">
+      <video class="hero-video" autoplay muted loop playsinline
+        poster="https://assets.mixkit.co/videos/5016/5016-thumb-720-0.jpg">
+        <source src="https://assets.mixkit.co/videos/5016/5016-720.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow" id="hero-eyebrow">Boutique Travel Agency</span>
+        <h1 id="hero-title">Three threads.<br><em>One journey.</em></h1>
+        <p class="lead" id="hero-lead">Personalized inbound &amp; outbound tours, plus full visa and documentation support — planned with a boutique's attention to detail.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="cta-btn" id="hero-cta1">Start planning</a>
+          <a href="#bestsellers" class="cta-btn ghost" id="hero-cta2">Explore destinations</a>
+        </div>
+        <div class="hero-stats" id="hero-stats"></div>
+      </div>
+      <div class="hero-visual">
+        <img class="rings-big" src="trinity-travel-logo1.png" alt="Trinity Travel Boutique">
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="why-eyebrow">Why Trinity</span>
+        <h2 id="why-title">Why choose us</h2>
+        <p id="why-intro"></p>
+      </div>
+      <div class="why-grid" id="why-grid"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section-alt" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="services-eyebrow">What we do</span>
+        <h2 id="services-title">Our services</h2>
+      </div>
+      <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="how-eyebrow">Process</span>
+        <h2 id="how-title">How it works</h2>
+      </div>
+      <div class="steps-row" id="how-steps">
+        <div class="step-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BESTSELLERS -->
+  <section class="section-alt" id="bestsellers">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="best-eyebrow">Fan favorites</span>
+        <h2 id="best-title">Top picks</h2>
+      </div>
+      <div class="card-scroller" id="best-grid"></div>
+      <div class="section-footer-action">
+        <a href="#" class="cta-btn ghost" data-view="gallery-full" id="best-explore">Explore more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="gallery-eyebrow">Moments</span>
+        <h2 id="gallery-title">Gallery</h2>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+      <div class="section-footer-action">
+        <a href="#" class="cta-btn ghost" data-view="gallery-full" id="gallery-explore">Explore more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section-alt" id="news">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="news-eyebrow">Journal</span>
+        <h2 id="news-title">Latest news</h2>
+      </div>
+      <div class="news-grid" id="news-grid"></div>
+      <div class="section-footer-action">
+        <a href="#" class="cta-btn ghost" data-view="news-full" id="news-explore">Explore more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="reviews-eyebrow">Testimonials</span>
+        <h2 id="reviews-title">What travelers say</h2>
+      </div>
+      <div class="reviews-track" id="reviews-track"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-alt" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="faq-eyebrow">Good to know</span>
+        <h2 id="faq-title">Frequently asked questions</h2>
+      </div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT (email only) -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-section">
+        <div class="contact-inner">
+          <span class="eyebrow" id="contact-eyebrow">Stay in touch</span>
+          <h2 id="contact-title">Let's start your journey</h2>
+          <p id="contact-text">Leave your email and our team will reach out to plan your next trip.</p>
+          <form class="email-form" id="email-form">
+            <input type="email" required id="email-input" placeholder="you@example.com">
+            <button type="submit" id="email-submit">Get in touch</button>
+          </form>
+          <p class="form-note" id="contact-note">We'll get back to you shortly. No spam, ever.</p>
+          <p class="form-success" id="form-success">Thank you — we'll be in touch soon!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="section-alt" id="contacts">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" id="contacts-eyebrow">Find us</span>
+        <h2 id="contacts-title">Contacts</h2>
+      </div>
+      <div class="contacts-grid">
+        <div id="contacts-details"></div>
+        <div class="map-block">
+          <svg class="pin" viewBox="0 0 100 100" fill="none">
+            <circle cx="38" cy="42" r="22" stroke="#E7C1B1" stroke-width="8"/>
+            <circle cx="60" cy="42" r="22" stroke="#ECCC81" stroke-width="8"/>
+            <circle cx="49" cy="62" r="22" stroke="#A9A6A2" stroke-width="8"/>
+          </svg>
+        </div>
+      </div>
+      <div class="section-footer-action">
+        <a href="#" class="cta-btn ghost" data-view="contacts-full" id="contacts-explore">Explore more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL -->
+  <section id="social">
+    <div class="wrap text-center">
+      <div class="section-head section-head-center">
+        <span class="eyebrow" id="social-eyebrow">Follow along</span>
+        <h2 id="social-title">Find us online</h2>
+      </div>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.instagram.com/trinitytravelboutique" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#211D1A" stroke-width="1.6"/><circle cx="12" cy="12" r="4.5" stroke="#211D1A" stroke-width="1.6"/><circle cx="17.4" cy="6.6" r="1.2" fill="#211D1A"/></svg>
+        </a>
+        <a class="social-btn" href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14 8.5h2V5.3c-.35-.05-1.5-.15-2.85-.15-2.83 0-4.65 1.72-4.65 4.9V13H5.5v3.5H8.5V22h3.6v-5.5h3l.5-3.5h-3.5v-2.4c0-1 .27-1.7 1.9-1.7Z" stroke="#211D1A" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="social-btn" href="#" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3Z" stroke="#211D1A" stroke-width="1.6"/><path d="M8.5 8.8c.2-.6.9-.6 1.3-.3l.9.9c.3.3.3.7.1 1.1l-.4.7c-.2.3-.1.6.1.9.6.9 1.6 1.8 2.5 2.3.3.2.6.2.9 0l.7-.5c.3-.2.7-.2 1 0l1 .8c.4.3.5 1 0 1.4-.6.6-1.5 1-2.4.8-1.9-.4-4.3-2.6-5.3-4.4-.5-.8-.6-1.8-.4-2.7Z" fill="#211D1A"/></svg>
+        </a>
+        <a class="social-btn" href="#" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 4 3 11.4l5 1.8m13-9.2-2.6 15L11.5 15m9.5-11L11.5 15m0 0-.7 5 3.2-3.6" stroke="#211D1A" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SUBPAGE: GALLERY FULL ============ -->
+<div class="subpage" id="view-gallery-full">
+  <div class="wrap">
+    <a href="#" class="back-link" data-view="home"><span>&larr;</span> <span id="back-1">Back home</span></a>
+    <div class="section-head">
+      <span class="eyebrow" id="gfull-eyebrow">Moments</span>
+      <h2 id="gfull-title">Full gallery</h2>
+    </div>
+    <div class="gallery-grid full mb-80" id="gallery-full-grid"></div>
+  </div>
+</div>
+
+<!-- ============ SUBPAGE: NEWS FULL ============ -->
+<div class="subpage" id="view-news-full">
+  <div class="wrap">
+    <a href="#" class="back-link" data-view="home"><span>&larr;</span> <span id="back-2">Back home</span></a>
+    <div class="section-head">
+      <span class="eyebrow" id="nfull-eyebrow">Journal</span>
+      <h2 id="nfull-title">All news</h2>
+    </div>
+    <div class="news-grid full mb-80" id="news-full-list"></div>
+  </div>
+</div>
+
+<!-- ============ SUBPAGE: CONTACTS FULL ============ -->
+<div class="subpage" id="view-contacts-full">
+  <div class="wrap">
+    <a href="#" class="back-link" data-view="home"><span>&larr;</span> <span id="back-3">Back home</span></a>
+    <div class="section-head">
+      <span class="eyebrow" id="cfull-eyebrow">Find us</span>
+      <h2 id="cfull-title">Get in touch</h2>
+    </div>
+    <div class="contacts-grid mb-80">
+      <div id="contacts-full-details"></div>
+      <div class="map-block">
+        <svg class="pin" viewBox="0 0 100 100" fill="none">
+          <circle cx="38" cy="42" r="22" stroke="#E7C1B1" stroke-width="8"/>
+          <circle cx="60" cy="42" r="22" stroke="#ECCC81" stroke-width="8"/>
+          <circle cx="49" cy="62" r="22" stroke="#A9A6A2" stroke-width="8"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SUBPAGE: PRIVACY ============ -->
+<div class="subpage" id="view-privacy">
+  <div class="wrap">
+    <a href="#" class="back-link" data-view="home"><span>&larr;</span> <span id="back-4">Back home</span></a>
+    <div class="section-head"><h2 id="privacy-title">Privacy Policy</h2></div>
+    <div class="legal-body mb-80" id="privacy-body"></div>
+  </div>
+</div>
+
+<!-- ============ SUBPAGE: TERMS ============ -->
+<div class="subpage" id="view-terms">
+  <div class="wrap">
+    <a href="#" class="back-link" data-view="home"><span>&larr;</span> <span id="back-5">Back home</span></a>
+    <div class="section-head"><h2 id="terms-title">Terms &amp; Conditions</h2></div>
+    <div class="legal-body mb-80" id="terms-body"></div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <svg class="footer-ring-mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle cx="38" cy="42" r="24" stroke="#E7C1B1" stroke-width="9"/>
+            <circle cx="62" cy="42" r="24" stroke="#ECCC81" stroke-width="9"/>
+            <circle cx="50" cy="64" r="24" stroke="#D0CFCE" stroke-width="9"/>
+          </svg>
+          Trinity
+        </div>
+        <p id="footer-tagline">A boutique travel agency weaving inbound, outbound and visa journeys together.</p>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-nav-title">Explore</h4>
+        <div id="footer-nav-links"></div>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-contact-title">Contact</h4>
+        <div id="footer-contact-info"></div>
+      </div>
+      <div class="footer-col">
+        <h4 id="footer-follow-title">Follow</h4>
+        <a href="https://www.instagram.com/trinitytravelboutique" target="_blank" rel="noopener">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p id="footer-rights">&copy; 2026 Trinity Travel Boutique. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#" data-view="privacy" id="footer-privacy">Privacy Policy</a>
+        <a href="#" data-view="terms" id="footer-terms">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ================= CONTENT MODEL ================= */
+const RINGS = ['#E7C1B1','#ECCC81','#D0CFCE','#D99E8B','#A9A6A2'];
+
+const CONTENT = {
+am: {
+  nav: [["home","Գլխավոր"],["why","Ինչու՞ մենք"],["services","Ծառայություններ"],["how","Ինչպես ենք աշխատում"],["bestsellers","Ընտրանի"],["gallery","Պատկերասրահ"],["news","Նորություններ"],["reviews","Կարծիքներ"],["faq","ՀՏՀ"],["contacts","Կոնտակտներ"]],
+  headerCta: "Կապվել",
+  brandSub: "TRAVEL BOUTIQUE",
+  hero: {
+    eyebrow: "Բուտիկ ճամփորդական գործակալություն",
+    title1: "Երեք թել.", title2: "մեկ ուղևորություն.",
+    lead: "Անհատականացված մուտքային և ելքային տուրիզմ, ինչպես նաև փաստաթղթավորման և վիզայի աջակցություն՝ բուտիկին հատուկ ուշադրությամբ։",
+    cta1: "Սկսել պլանավորումը", cta2: "Բացահայտել ուղղությունները",
+    stats: [["10+","տարվա փորձ"],["1200+","գոհ ճամփորդներ"],["30+","երկրներ"]]
+  },
+  why: {
+    eyebrow:"Ինչու՞ Trinity", title:"Ինչու՞ ընտրել մեզ",
+    intro:"Չորս պատճառ, թե ինչու հաճախորդները մեզ վստահում են իրենց ուղևորությունների կազմակերպումը։",
+    items:[
+      {t:"Անհատական մոտեցում", d:"Ամեն ուղևորություն կազմվում է հատուկ ձեզ համար, ոչ թե ըստ ստանդարտ շաբլոնի։"},
+      {t:"Փաստաթղթերի փորձագիտություն", d:"Վիզայի և փաստաթղթավորման ողջ գործընթացը՝ ճշգրիտ և ժամանակին։"},
+      {t:"Մուտքային և ելքային ընդգրկում", d:"Ողջունում ենք Հայաստան այցելուներին և ուղարկում ենք ճամփորդներին ամբողջ աշխարհով մեկ։"},
+      {t:"Բուտիկային ուշադրություն", d:"Փոքր, կենտրոնացած թիմ՝ մտերիմ և վստահելի հարաբերությունների վրա հիմնված։"}
+    ]
+  },
+  services: {
+    eyebrow:"Ի՞նչ ենք անում", title:"Մեր ծառայությունները",
+    items:[
+      {t:"Մուտքային տուրիզմ", d:"Խնամքով կազմված փորձառություններ Հայաստան ժամանող հյուրերի համար։"},
+      {t:"Ելքային տուրիզմ", d:"Մտածված ուղևորություններ դեպի աշխարհի տարբեր ուղղություններ։"},
+      {t:"Փաստաթղթավորման աջակցություն", d:"Բոլոր անհրաժեշտ փաստաթղթերը՝ ճիշտ և ժամանակին ձևակերպված։"},
+      {t:"Վիզայի աջակցություն", d:"Ուղեկցում ենք վիզայի պահանջների և դիմումների ողջ ընթացքում։"}
+    ]
+  },
+  how: {
+    eyebrow:"Գործընթաց", title:"Ինչպես ենք աշխատում",
+    steps:[
+      {t:"Խորհրդատվություն", d:"Կիսվեք ձեր ուղևորության երազանքով, մենք լսում ենք ուշադիր։"},
+      {t:"Պլանավորում", d:"Կազմում ենք երթուղին և փաստաթղթերի ծրագիրը ձեզ համար։"},
+      {t:"Նախապատրաստում", d:"Վիզան և փաստաթղթերը ձևակերպվում են մեր օգնությամբ։"},
+      {t:"Ուղևորություն", d:"Դուք ճամփորդում եք, մենք միշտ կապի մեջ ենք ձեզ հետ։"}
+    ]
+  },
+  best: {
+    eyebrow:"Ամենասիրվածները", title:"Ընտրանի ուղղություններ", explore:"Ավելին տեսնել",
+    items:[
+      {n:"Երևան", s:"Հայաստանի սիրտը, հյուրերի համար"},
+      {n:"Թբիլիսի", s:"Հին քաղաքի հմայքը"},
+      {n:"Դուբայ", s:"Ժամանակակից շքեղություն"},
+      {n:"Փարիզ", s:"Դասական եվրոպական ուղևորություն"},
+      {n:"Սանտորինի", s:"Էգեյան ծովի կապույտը"},
+      {n:"Ստամբուլ", s:"Երկու մայրցամաքների խաչմերուկում"}
+    ]
+  },
+  gallery:{ eyebrow:"Պահեր", title:"Պատկերասրահ", explore:"Ավելին տեսնել",
+    captions:["Ծովափնյա արևածագ","Լեռնային արահետ","Հին փողոցներ","Տեղական խոհանոց","Մշակութային տոնավաճառ","Անապատային մայրամուտ","Կղզու ամրոց","Քաղաքային համայնապատկեր"] },
+  news:{ eyebrow:"Ամսագիր", title:"Վերջին նորությունները", explore:"Ավելին տեսնել",
+    items:[
+      {d:"12 հուլիսի, 2026", t:"Նոր ուղղություն՝ Հարավային Կովկաս", e:"Ընդլայնում ենք մեր մուտքային տուրերի ցանկը Հայաստանում և հարևան երկրներում։"},
+      {d:"28 հունիսի, 2026", t:"Վիզայի կանոնների թարմացում", e:"Ինչ պետք է իմանալ 2026 թվականին եվրոպական երկրներ մեկնողներին։"},
+      {d:"3 մայիսի, 2026", t:"Գարնանային ուղևորությունների ուղեցույց", e:"Մեր թիմի առաջարկած լավագույն պահերն ու վայրերը գարնանային սեզոնի համար։"},
+      {d:"19 ապրիլի, 2026", t:"Trinity-ն ընդլայնում է թիմը", e:"Նոր փաստաթղթավորման մասնագետներ՝ ավելի արագ և ճշգրիտ սպասարկման համար։"}
+    ]
+  },
+  reviews:{ eyebrow:"Կարծիքներ", title:"Ինչ են ասում ճամփորդները",
+    items:[
+      {n:"Անի Հակոբյան", r:"Ելքային տուր, Իտալիա", q:"Ամեն ինչ կազմակերպված էր անթերի, մինչև անգամ վիզայի բարդությունները հեշտությամբ լուծվեցին։"},
+      {n:"Դավիթ Սարգսյան", r:"Մուտքային տուր, հյուրեր ԱՄՆ-ից", q:"Մեր հյուրերը գերախորհուրդ էին ստացել Trinity-ից, և արդյունքը գերազանցեց սպասումները։"},
+      {n:"Լիլիթ Գրիգորյան", r:"Փաստաթղթավորում", q:"Փաստաթղթերի ողջ գործընթացը՝ առանց սթրեսի։ Շնորհակալ եմ թիմին ուշադրության համար։"}
+    ]
+  },
+  faq:{ eyebrow:"Օգտակար է իմանալ", title:"Հաճախ տրվող հարցեր",
+    items:[
+      {q:"Ի՞նչ երկրների համար եք տրամադրում վիզայի աջակցություն։", a:"Աջակցում ենք հիմնական եվրոպական, ամերիկյան և ասիական ուղղությունների վիզայի դիմումների հետ, կախված ընթացիկ պահանջներից։"},
+      {q:"Որքա՞ն ժամանակ է պահանջվում փաստաթղթերի ձևակերպման համար։", a:"Ժամկետը կախված է երկրից և դիմումի տեսակից, սովորաբար 2-6 շաբաթ. մենք տրամադրում ենք ճշգրիտ ժամանակացույց խորհրդատվության ժամանակ։"},
+      {q:"Ի՞նչ տարբերություն կա մուտքային և ելքային ծառայությունների միջև։", a:"Մուտքային տուրիզմը վերաբերում է Հայաստան ժամանող հյուրերին, իսկ ելքայինը՝ ձեր ուղևորություններին դեպի արտերկիր։"},
+      {q:"Ինչպե՞ս է անցնում խորհրդատվությունը։", a:"Առցանց կամ գրասենյակում հանդիպում ենք, քննարկում ձեր նպատակներն ու ժամկետները, ապա կազմում անհատական առաջարկ։"},
+      {q:"Ի՞նչ լեզուներով եք սպասարկում։", a:"Սպասարկում ենք հայերեն, ռուսերեն և անգլերեն լեզուներով։"}
+    ]
+  },
+  contact:{ eyebrow:"Կապվեք մեզ հետ", title:"Սկսենք ձեր ուղևորությունը",
+    text:"Թողեք ձեր էլ. հասցեն, և մեր թիմը կապ կհաստատի ձեզ հետ։",
+    placeholder:"you@example.com", button:"Ուղարկել", note:"Մենք շուտով կպատասխանենք։ Առանց սպամի։",
+    success:"Շնորհակալություն. մենք շուտով կկապվենք ձեզ հետ։" },
+  contacts:{ eyebrow:"Գտեք մեզ", title:"Կոնտակտներ", explore:"Ավելին տեսնել",
+    address:["Հասցե","Երևան, Հայաստան"], phone:["Հեռախոս","+374 XX XXX XXX"], email:["Էլ. փոստ","info@trinitytravel.am"], hours:["Աշխատանքային ժամեր","Երկ–Ուրբ, 10:00–19:00"] },
+  social:{ eyebrow:"Հետևեք մեզ", title:"Գտեք մեզ առցանց" },
+  footer:{ tagline:"Բուտիկ ճամփորդական գործակալություն, որը միավորում է մուտքային, ելքային և վիզայի ուղևորությունները։",
+    navTitle:"Բաժիններ", contactTitle:"Կապ", followTitle:"Հետևել",
+    rights:"© 2026 Trinity Travel Boutique. Բոլոր իրավունքները պաշտպանված են։",
+    privacy:"Գաղտնիության քաղաքականություն", terms:"Կանոններ և պայմաններ", back:"Վերադառնալ" },
+  legal:{
+    privacyTitle:"Գաղտնիության քաղաքականություն",
+    privacyBody:["Trinity Travel Boutique-ը հարգում է ձեր գաղտնիությունը և հավաքում է միայն այն տվյալները, որոնք անհրաժեշտ են ձեզ սպասարկելու համար, ինչպիսին է ձեր էլ. փոստի հասցեն կապի ձևից։",
+      "Ձեր տվյալները չեն փոխանցվում երրորդ կողմերին առևտրային նպատակներով և օգտագործվում են բացառապես ձեզ հետ կապ հաստատելու համար։",
+      "Դուք կարող եք ցանկացած պահի խնդրել ձեր տվյալների ջնջումը՝ գրելով մեզ նշված էլ. փոստի հասցեով։"],
+    termsTitle:"Կանոններ և պայմաններ",
+    termsBody:["Այս կայքի օգտագործմամբ դուք համաձայնում եք, որ ներկայացված տեղեկատվությունը կրում է տեղեկատվական բնույթ և ենթակա է հաստատման խորհրդատվության ընթացքում։",
+      "Trinity Travel Boutique-ը իրավունք ունի փոփոխել ծառայությունների նկարագրությունը և պայմանները առանց նախնական ծանուցման։",
+      "Բոլոր ուղևորությունների վերջնական պայմանները (ներառյալ վիզայի պահանջները) հաստատվում են անհատական խորհրդատվության ընթացքում։"]
+  }
+},
+ru: {
+  nav: [["home","Главная"],["why","Почему мы"],["services","Услуги"],["how","Как это работает"],["bestsellers","Топ направлений"],["gallery","Галерея"],["news","Новости"],["reviews","Отзывы"],["faq","Вопросы"],["contacts","Контакты"]],
+  headerCta: "Связаться",
+  brandSub: "TRAVEL BOUTIQUE",
+  hero: {
+    eyebrow: "Бутик-агентство путешествий",
+    title1: "Три нити.", title2: "одно путешествие.",
+    lead: "Индивидуальные внутренний и выездной туризм, а также полное сопровождение визовых и документальных вопросов — с вниманием бутика к деталям.",
+    cta1: "Начать планирование", cta2: "Изучить направления",
+    stats: [["10+","лет опыта"],["1200+","довольных путешественников"],["30+","стран"]]
+  },
+  why: {
+    eyebrow:"Почему Trinity", title:"Почему выбирают нас",
+    intro:"Четыре причины, по которым клиенты доверяют нам организацию своих поездок.",
+    items:[
+      {t:"Индивидуальный подход", d:"Каждое путешествие создаётся именно для вас, а не по стандартному шаблону."},
+      {t:"Экспертиза по документам", d:"Весь процесс оформления визы и документов — точно и в срок."},
+      {t:"Въездной и выездной охват", d:"Принимаем гостей в Армении и отправляем путешественников по всему миру."},
+      {t:"Бутиковое внимание", d:"Небольшая команда, выстраивающая близкие и надёжные отношения с клиентами."}
+    ]
+  },
+  services: {
+    eyebrow:"Чем мы занимаемся", title:"Наши услуги",
+    items:[
+      {t:"Въездной туризм", d:"Продуманные впечатления для гостей, открывающих для себя Армению."},
+      {t:"Выездной туризм", d:"Тщательно спланированные поездки по всему миру."},
+      {t:"Оформление документов", d:"Все необходимые документы — правильно и вовремя."},
+      {t:"Визовая поддержка", d:"Сопровождаем на всех этапах визовых требований и подачи заявлений."}
+    ]
+  },
+  how: {
+    eyebrow:"Процесс", title:"Как это работает",
+    steps:[
+      {t:"Консультация", d:"Расскажите о своей мечте о путешествии — мы внимательно слушаем."},
+      {t:"Планирование", d:"Составляем маршрут и план оформления документов."},
+      {t:"Подготовка", d:"Виза и документы оформляются с нашей помощью."},
+      {t:"Путешествие", d:"Вы путешествуете, а мы остаёмся на связи."}
+    ]
+  },
+  best: {
+    eyebrow:"Фавориты", title:"Топ направлений", explore:"Смотреть больше",
+    items:[
+      {n:"Ереван", s:"Сердце Армении для гостей"},
+      {n:"Тбилиси", s:"Очарование старого города"},
+      {n:"Дубай", s:"Современная роскошь"},
+      {n:"Париж", s:"Классическое путешествие по Европе"},
+      {n:"Санторини", s:"Синева Эгейского моря"},
+      {n:"Стамбул", s:"На перекрёстке двух континентов"}
+    ]
+  },
+  gallery:{ eyebrow:"Моменты", title:"Галерея", explore:"Смотреть больше",
+    captions:["Рассвет на побережье","Горная тропа","Старинные улочки","Местная кухня","Культурный фестиваль","Закат в пустыне","Островная крепость","Панорама города"] },
+  news:{ eyebrow:"Журнал", title:"Последние новости", explore:"Смотреть больше",
+    items:[
+      {d:"12 июля 2026", t:"Новое направление: Южный Кавказ", e:"Расширяем список въездных туров по Армении и соседним странам."},
+      {d:"28 июня 2026", t:"Обновление визовых правил", e:"Что нужно знать тем, кто планирует поездку в Европу в 2026 году."},
+      {d:"3 мая 2026", t:"Гид по весенним поездкам", e:"Лучшие места и моменты весеннего сезона по версии нашей команды."},
+      {d:"19 апреля 2026", t:"Trinity расширяет команду", e:"Новые специалисты по документам — для более быстрого и точного сервиса."}
+    ]
+  },
+  reviews:{ eyebrow:"Отзывы", title:"Что говорят путешественники",
+    items:[
+      {n:"Ани Акопян", r:"Выездной тур, Италия", q:"Всё было организовано безупречно, даже сложности с визой решились легко."},
+      {n:"Давид Саргсян", r:"Въездной тур, гости из США", q:"Наши гости узнали о Trinity по рекомендации, и результат превзошёл ожидания."},
+      {n:"Лилит Григорян", r:"Оформление документов", q:"Весь процесс оформления документов прошёл без стресса. Спасибо команде за внимание."}
+    ]
+  },
+  faq:{ eyebrow:"Полезно знать", title:"Часто задаваемые вопросы",
+    items:[
+      {q:"Для каких стран вы оказываете визовую поддержку?", a:"Помогаем с заявлениями по основным европейским, американским и азиатским направлениям, в зависимости от актуальных требований."},
+      {q:"Сколько времени занимает оформление документов?", a:"Сроки зависят от страны и типа заявления, обычно 2–6 недель; точный график мы даём на консультации."},
+      {q:"В чём разница между въездными и выездными услугами?", a:"Въездной туризм — это гости, приезжающие в Армению, а выездной — ваши поездки за рубеж."},
+      {q:"Как проходит консультация?", a:"Встречаемся онлайн или в офисе, обсуждаем цели и сроки, затем готовим индивидуальное предложение."},
+      {q:"На каких языках вы обслуживаете?", a:"Обслуживаем на армянском, русском и английском языках."}
+    ]
+  },
+  contact:{ eyebrow:"Свяжитесь с нами", title:"Начнём ваше путешествие",
+    text:"Оставьте свой email, и наша команда свяжется с вами.",
+    placeholder:"you@example.com", button:"Отправить", note:"Мы скоро ответим. Никакого спама.",
+    success:"Спасибо — мы скоро с вами свяжемся!" },
+  contacts:{ eyebrow:"Найдите нас", title:"Контакты", explore:"Смотреть больше",
+    address:["Адрес","Ереван, Армения"], phone:["Телефон","+374 XX XXX XXX"], email:["Email","info@trinitytravel.am"], hours:["Часы работы","Пн–Пт, 10:00–19:00"] },
+  social:{ eyebrow:"Подписывайтесь", title:"Найдите нас онлайн" },
+  footer:{ tagline:"Бутик-агентство путешествий, объединяющее въездной, выездной туризм и визовую поддержку.",
+    navTitle:"Разделы", contactTitle:"Контакты", followTitle:"Мы в соцсетях",
+    rights:"© 2026 Trinity Travel Boutique. Все права защищены.",
+    privacy:"Политика конфиденциальности", terms:"Условия использования", back:"На главную" },
+  legal:{
+    privacyTitle:"Политика конфиденциальности",
+    privacyBody:["Trinity Travel Boutique уважает вашу конфиденциальность и собирает только те данные, которые необходимы для обслуживания, например, ваш email из формы связи.",
+      "Ваши данные не передаются третьим лицам в коммерческих целях и используются исключительно для связи с вами.",
+      "Вы можете в любой момент запросить удаление своих данных, написав нам на указанный email."],
+    termsTitle:"Условия использования",
+    termsBody:["Используя этот сайт, вы соглашаетесь, что представленная информация носит справочный характер и уточняется в ходе консультации.",
+      "Trinity Travel Boutique оставляет за собой право изменять описание услуг и условия без предварительного уведомления.",
+      "Окончательные условия поездки (включая визовые требования) подтверждаются в ходе индивидуальной консультации."]
+  }
+},
+en: {
+  nav: [["home","Home"],["why","Why Us"],["services","Services"],["how","How It Works"],["bestsellers","Top Picks"],["gallery","Gallery"],["news","News"],["reviews","Reviews"],["faq","FAQ"],["contacts","Contacts"]],
+  headerCta: "Contact",
+  brandSub: "TRAVEL BOUTIQUE",
+  hero: {
+    eyebrow: "Boutique Travel Agency",
+    title1: "Three threads.", title2: "one journey.",
+    lead: "Personalized inbound and outbound tourism, plus full visa and documentation support — planned with a boutique's attention to detail.",
+    cta1: "Start planning", cta2: "Explore destinations",
+    stats: [["10+","years of experience"],["1200+","happy travelers"],["30+","countries"]]
+  },
+  why: {
+    eyebrow:"Why Trinity", title:"Why choose us",
+    intro:"Four reasons clients trust us to plan their journeys.",
+    items:[
+      {t:"Personalized care", d:"Every trip is built for you specifically, never from a template."},
+      {t:"Documentation expertise", d:"The full visa and paperwork process, handled accurately and on time."},
+      {t:"Inbound & outbound reach", d:"Welcoming visitors to Armenia and sending travelers around the world."},
+      {t:"Boutique attention", d:"A small, close-knit team building real relationships with every client."}
+    ]
+  },
+  services: {
+    eyebrow:"What we do", title:"Our services",
+    items:[
+      {t:"Inbound tourism", d:"Curated experiences for visitors discovering Armenia."},
+      {t:"Outbound tourism", d:"Thoughtfully planned journeys to destinations worldwide."},
+      {t:"Documentation support", d:"All required paperwork, handled correctly and on time."},
+      {t:"Visa support", d:"Guidance through visa requirements and applications, start to finish."}
+    ]
+  },
+  how: {
+    eyebrow:"Process", title:"How it works",
+    steps:[
+      {t:"Consultation", d:"Share your travel dream — we listen closely to what matters to you."},
+      {t:"Planning", d:"We craft the itinerary and documentation plan around it."},
+      {t:"Preparation", d:"Visa and paperwork are handled with our support."},
+      {t:"Journey", d:"You travel — we stay close throughout."}
+    ]
+  },
+  best: {
+    eyebrow:"Fan favorites", title:"Top picks", explore:"Explore more",
+    items:[
+      {n:"Yerevan", s:"The heart of Armenia, for visiting guests"},
+      {n:"Tbilisi", s:"Old-town charm next door"},
+      {n:"Dubai", s:"Modern luxury on the Gulf"},
+      {n:"Paris", s:"A classic European journey"},
+      {n:"Santorini", s:"Aegean blue at its finest"},
+      {n:"Istanbul", s:"Where two continents meet"}
+    ]
+  },
+  gallery:{ eyebrow:"Moments", title:"Gallery", explore:"Explore more",
+    captions:["Coastal sunrise","Mountain trail","Old-town streets","Local cuisine","Cultural festival","Desert sunset","Island fortress","City skyline"] },
+  news:{ eyebrow:"Journal", title:"Latest news", explore:"Explore more",
+    items:[
+      {d:"July 12, 2026", t:"New route: the South Caucasus", e:"Expanding our inbound tour offering across Armenia and neighboring countries."},
+      {d:"June 28, 2026", t:"Visa rules update", e:"What travelers heading to Europe in 2026 need to know."},
+      {d:"May 3, 2026", t:"Spring travel guide", e:"Our team's favorite spots and moments for the spring season."},
+      {d:"April 19, 2026", t:"Trinity grows the team", e:"New documentation specialists join, for faster and more accurate service."}
+    ]
+  },
+  reviews:{ eyebrow:"Testimonials", title:"What travelers say",
+    items:[
+      {n:"Ani Hakobyan", r:"Outbound tour, Italy", q:"Everything was arranged flawlessly — even the tricky visa steps went smoothly."},
+      {n:"Davit Sargsyan", r:"Inbound tour, guests from the US", q:"Our guests found Trinity through a recommendation, and the trip exceeded every expectation."},
+      {n:"Lilit Grigoryan", r:"Documentation support", q:"The whole paperwork process was stress-free. Thank you for the careful attention."}
+    ]
+  },
+  faq:{ eyebrow:"Good to know", title:"Frequently asked questions",
+    items:[
+      {q:"Which countries do you provide visa support for?", a:"We assist with applications for major European, American, and Asian destinations, depending on current requirements."},
+      {q:"How long does documentation take?", a:"Timing depends on the country and application type — typically 2–6 weeks. We share an exact timeline during your consultation."},
+      {q:"What's the difference between inbound and outbound services?", a:"Inbound tourism covers guests visiting Armenia, while outbound covers your trips abroad."},
+      {q:"How does the consultation work?", a:"We meet online or in person, discuss your goals and timeline, then prepare a personalized proposal."},
+      {q:"What languages do you serve in?", a:"We serve clients in Armenian, Russian, and English."}
+    ]
+  },
+  contact:{ eyebrow:"Get in touch", title:"Let's start your journey",
+    text:"Leave your email and our team will reach out to plan your next trip.",
+    placeholder:"you@example.com", button:"Get in touch", note:"We'll get back to you shortly. No spam, ever.",
+    success:"Thank you — we'll be in touch soon!" },
+  contacts:{ eyebrow:"Find us", title:"Contacts", explore:"Explore more",
+    address:["Address","Yerevan, Armenia"], phone:["Phone","+374 XX XXX XXX"], email:["Email","info@trinitytravel.am"], hours:["Hours","Mon–Fri, 10:00–19:00"] },
+  social:{ eyebrow:"Follow along", title:"Find us online" },
+  footer:{ tagline:"A boutique travel agency weaving inbound, outbound and visa journeys together.",
+    navTitle:"Explore", contactTitle:"Contact", followTitle:"Follow",
+    rights:"© 2026 Trinity Travel Boutique. All rights reserved.",
+    privacy:"Privacy Policy", terms:"Terms & Conditions", back:"Back home" },
+  legal:{
+    privacyTitle:"Privacy Policy",
+    privacyBody:["Trinity Travel Boutique respects your privacy and collects only the data needed to serve you — such as the email address you share through our contact form.",
+      "Your data is never sold or shared with third parties for commercial purposes, and is used solely to get in touch with you.",
+      "You can request deletion of your data at any time by writing to us at the email address listed above."],
+    termsTitle:"Terms & Conditions",
+    termsBody:["By using this site, you acknowledge that the information presented is for general guidance and is confirmed in detail during consultation.",
+      "Trinity Travel Boutique reserves the right to update service descriptions and terms without prior notice.",
+      "Final trip terms, including visa requirements, are confirmed individually during your consultation."]
+  }
+}
+};
+
+let lang = 'am';
+
+/* ---------- helpers ---------- */
+function ringIcon(i, sizeClass='icon-44'){
+  const c = RINGS[i % RINGS.length], c2 = RINGS[(i+1) % RINGS.length];
+  return `<svg class="ring-icon ${sizeClass}" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+    <circle cx="40" cy="42" r="22" stroke="${c}" stroke-width="9"/>
+    <circle cx="62" cy="52" r="22" stroke="${c2}" stroke-width="9"/>
+  </svg>`;
+}
+function tileGradientClass(i){
+  return `tile-grad-${i % 8}`;
+}
+
+/* ---------- render ---------- */
+function render(){
+  const C = CONTENT[lang];
+  document.documentElement.lang = lang === 'am' ? 'hy' : lang;
+
+  // nav (desktop + mobile)
+  document.getElementById('main-nav').innerHTML = C.nav.map(([id,label]) => `<a href="#${id}">${label}</a>`).join('');
+  document.getElementById('mobile-nav-links').innerHTML = C.nav.map(([id,label]) => `<a href="#${id}" class="mobile-link">${label}</a>`).join('');
+  document.getElementById('header-cta').textContent = C.headerCta;
+  document.getElementById('brand-sub').textContent = C.brandSub;
+
+  // hero
+  document.getElementById('hero-eyebrow').textContent = C.hero.eyebrow;
+  document.getElementById('hero-title').innerHTML = `${C.hero.title1}<br><em>${C.hero.title2}</em>`;
+  document.getElementById('hero-lead').textContent = C.hero.lead;
+  document.getElementById('hero-cta1').textContent = C.hero.cta1;
+  document.getElementById('hero-cta2').textContent = C.hero.cta2;
+  document.getElementById('hero-stats').innerHTML = C.hero.stats.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+
+  // why
+  document.getElementById('why-eyebrow').textContent = C.why.eyebrow;
+  document.getElementById('why-title').textContent = C.why.title;
+  document.getElementById('why-intro').textContent = C.why.intro;
+  document.getElementById('why-grid').innerHTML = C.why.items.map((it,i)=>`
+    <div class="why-card">
+      <div class="why-icon">${ringIcon(i,'icon-44')}</div>
+      <h3>${it.t}</h3><p>${it.d}</p>
+    </div>`).join('');
+
+  // services
+  document.getElementById('services-eyebrow').textContent = C.services.eyebrow;
+  document.getElementById('services-title').textContent = C.services.title;
+  document.getElementById('services-grid').innerHTML = C.services.items.map((it,i)=>`
+    <div class="service-card c${i+1}"><h3>${it.t}</h3><p>${it.d}</p></div>`).join('');
+
+  // how
+  document.getElementById('how-eyebrow').textContent = C.how.eyebrow;
+  document.getElementById('how-title').textContent = C.how.title;
+  document.getElementById('how-steps').innerHTML = `<div class="step-line"></div>` + C.how.steps.map((s,i)=>`
+    <div class="step"><span class="step-num">0${i+1}</span><h3>${s.t}</h3><p>${s.d}</p></div>`).join('');
+
+  // bestsellers
+  document.getElementById('best-eyebrow').textContent = C.best.eyebrow;
+  document.getElementById('best-title').textContent = C.best.title;
+  document.getElementById('best-explore').textContent = C.best.explore;
+  document.getElementById('best-grid').innerHTML = C.best.items.map((it,i)=>`
+    <div class="dest-card ${tileGradientClass(i)}">
+      <div class="rings-deco">${ringIcon(i,'icon-40')}</div>
+      <div><h3>${it.n}</h3><span>${it.s}</span></div>
+    </div>`).join('');
+
+  // gallery (preview 8)
+  const galleryHTML = (n) => C.gallery.captions.slice(0,n).map((cap,i)=>`
+    <div class="gtile ${i%5===0?'tall':''} ${tileGradientClass(i+2)}"><span>${cap}</span></div>`).join('');
+  document.getElementById('gallery-eyebrow').textContent = C.gallery.eyebrow;
+  document.getElementById('gallery-title').textContent = C.gallery.title;
+  document.getElementById('gallery-explore').textContent = C.gallery.explore;
+  document.getElementById('gallery-grid').innerHTML = galleryHTML(8);
+  document.getElementById('gfull-eyebrow').textContent = C.gallery.eyebrow;
+  document.getElementById('gfull-title').textContent = C.gallery.title;
+  document.getElementById('gallery-full-grid').innerHTML = galleryHTML(8) + galleryHTML(8);
+  document.getElementById('back-1').textContent = C.footer.back;
+
+  // news
+  document.getElementById('news-eyebrow').textContent = C.news.eyebrow;
+  document.getElementById('news-title').textContent = C.news.title;
+  document.getElementById('news-explore').textContent = C.news.explore;
+  const newsCard = (it,i) => `
+    <div class="news-card">
+      <div class="news-thumb ${tileGradientClass(i+4)}"></div>
+      <div class="news-body">
+        <span class="news-date">${it.d}</span>
+        <h3>${it.t}</h3><p>${it.e}</p>
+      </div>
+    </div>`;
+  document.getElementById('news-grid').innerHTML = C.news.items.slice(0,3).map(newsCard).join('');
+  document.getElementById('nfull-eyebrow').textContent = C.news.eyebrow;
+  document.getElementById('nfull-title').textContent = C.news.title;
+  document.getElementById('news-full-list').innerHTML = C.news.items.map(newsCard).join('');
+  document.getElementById('back-2').textContent = C.footer.back;
+
+  // reviews
+  document.getElementById('reviews-eyebrow').textContent = C.reviews.eyebrow;
+  document.getElementById('reviews-title').textContent = C.reviews.title;
+  document.getElementById('reviews-track').innerHTML = C.reviews.items.map(r=>`
+    <div class="review-card">
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="quote">"${r.q}"</p>
+      <div class="review-who">
+        <div class="review-avatar"></div>
+        <div><b>${r.n}</b><span>${r.r}</span></div>
+      </div>
+    </div>`).join('');
+
+  // faq
+  document.getElementById('faq-eyebrow').textContent = C.faq.eyebrow;
+  document.getElementById('faq-title').textContent = C.faq.title;
+  document.getElementById('faq-list').innerHTML = C.faq.items.map((f,i)=>`
+    <div class="faq-item">
+      <button class="faq-q" data-idx="${i}"><span>${f.q}</span><span class="plus"></span></button>
+      <div class="faq-a"><p>${f.a}</p></div>
+    </div>`).join('');
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+
+  // contact
+  document.getElementById('contact-eyebrow').textContent = C.contact.eyebrow;
+  document.getElementById('contact-title').textContent = C.contact.title;
+  document.getElementById('contact-text').textContent = C.contact.text;
+  document.getElementById('email-input').placeholder = C.contact.placeholder;
+  document.getElementById('email-submit').textContent = C.contact.button;
+  document.getElementById('contact-note').textContent = C.contact.note;
+  document.getElementById('form-success').textContent = C.contact.success;
+
+  // contacts
+  const contactsList = C.contacts;
+  const contactsHTML = `
+    <div class="contact-detail"><div class="ic">${ringIcon(0,'icon-26')}</div><div><h4>${contactsList.address[0]}</h4><p>${contactsList.address[1]}</p></div></div>
+    <div class="contact-detail"><div class="ic">${ringIcon(1,'icon-26')}</div><div><h4>${contactsList.phone[0]}</h4><p>${contactsList.phone[1]}</p></div></div>
+    <div class="contact-detail"><div class="ic">${ringIcon(2,'icon-26')}</div><div><h4>${contactsList.email[0]}</h4><p>${contactsList.email[1]}</p></div></div>
+    <div class="contact-detail"><div class="ic">${ringIcon(3,'icon-26')}</div><div><h4>${contactsList.hours[0]}</h4><p>${contactsList.hours[1]}</p></div></div>`;
+  document.getElementById('contacts-eyebrow').textContent = C.contacts.eyebrow;
+  document.getElementById('contacts-title').textContent = C.contacts.title;
+  document.getElementById('contacts-explore').textContent = C.contacts.explore;
+  document.getElementById('contacts-details').innerHTML = contactsHTML;
+  document.getElementById('cfull-eyebrow').textContent = C.contacts.eyebrow;
+  document.getElementById('cfull-title').textContent = C.contacts.title;
+  document.getElementById('contacts-full-details').innerHTML = contactsHTML;
+  document.getElementById('back-3').textContent = C.footer.back;
+
+  // social
+  document.getElementById('social-eyebrow').textContent = C.social.eyebrow;
+  document.getElementById('social-title').textContent = C.social.title;
+
+  // footer
+  document.getElementById('footer-tagline').textContent = C.footer.tagline;
+  document.getElementById('footer-nav-title').textContent = C.footer.navTitle;
+  document.getElementById('footer-nav-links').innerHTML = C.nav.slice(0,6).map(([id,label])=>`<a href="#${id}">${label}</a>`).join('');
+  document.getElementById('footer-contact-title').textContent = C.footer.contactTitle;
+  document.getElementById('footer-contact-info').innerHTML = `<p>${C.contacts.email[1]}</p><p>${C.contacts.phone[1]}</p><p>${C.contacts.address[1]}</p>`;
+  document.getElementById('footer-follow-title').textContent = C.footer.followTitle;
+  document.getElementById('footer-rights').textContent = C.footer.rights;
+  document.getElementById('footer-privacy').textContent = C.footer.privacy;
+  document.getElementById('footer-terms').textContent = C.footer.terms;
+  document.getElementById('back-4').textContent = C.footer.back;
+  document.getElementById('back-5').textContent = C.footer.back;
+
+  // legal pages
+  document.getElementById('privacy-title').textContent = C.legal.privacyTitle;
+  document.getElementById('privacy-body').innerHTML = C.legal.privacyBody.map(p=>`<p>${p}</p>`).join('');
+  document.getElementById('terms-title').textContent = C.legal.termsTitle;
+  document.getElementById('terms-body').innerHTML = C.legal.termsBody.map(p=>`<p>${p}</p>`).join('');
+
+  // lang switch active state
+  document.querySelectorAll('.lang-switch button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+}
+
+/* ---------- view routing ---------- */
+function showView(name){
+  document.querySelectorAll('.subpage').forEach(el=>el.classList.remove('active'));
+  if(name === 'home'){
+    document.getElementById('home-view').classList.remove('hidden');
+    window.scrollTo({top:0, behavior:'instant'});
+  } else {
+    document.getElementById('home-view').classList.add('hidden');
+    const el = document.getElementById('view-' + name);
+    if(el){ el.classList.add('active'); }
+    window.scrollTo({top:0, behavior:'instant'});
+  }
+}
+
+document.addEventListener('click', (e)=>{
+  const viewTrigger = e.target.closest('[data-view]');
+  if(viewTrigger){
+    e.preventDefault();
+    showView(viewTrigger.dataset.view);
+    document.getElementById('mobile-drawer').classList.remove('open');
+    return;
+  }
+  const langBtn = e.target.closest('.lang-switch button');
+  if(langBtn){
+    lang = langBtn.dataset.lang;
+    render();
+    return;
+  }
+  const navLink = e.target.closest('a[href^="#"]');
+  if(navLink && navLink.getAttribute('href').length > 1 && !navLink.dataset.view){
+    e.preventDefault();
+    showView('home');
+    document.getElementById('mobile-drawer').classList.remove('open');
+    requestAnimationFrame(()=>{
+      const target = document.querySelector(navLink.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  }
+});
+
+document.getElementById('brand-link').addEventListener('click', (e)=>{
+  e.preventDefault();
+  showView('home');
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+document.getElementById('nav-toggle').addEventListener('click', ()=> document.getElementById('mobile-drawer').classList.add('open'));
+document.getElementById('mobile-close').addEventListener('click', ()=> document.getElementById('mobile-drawer').classList.remove('open'));
+
+document.getElementById('email-form').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'block';
+  document.getElementById('email-form').reset();
+});
+
+render();
+</script>
+</body>
+</html>
